@@ -1,0 +1,1 @@
+.formLogin{width:340px;margin-top:50px;margin-right:auto;margin-left:auto;padding:15px}.formLogin input{text-align:center;transition:.5s;border:3px solid #fff;background:hsla(0,0%,100%,.2)}.formLogin input:hover{background:hsla(0,0%,100%,.4)}.formLogin input:focus{transform:scale(1.1)}@media (max-width:768px){.formLogin{width:100%}}.formCheck{width:22px;height:22px}
