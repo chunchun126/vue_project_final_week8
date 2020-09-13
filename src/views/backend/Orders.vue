@@ -8,8 +8,8 @@
             <th>下單時間</th>
             <th>購買款項</th>
             <th>付款方式</th>
-            <th>應付金額</th>
-            <th>是否付款</th>
+            <th class="text-right">應付金額</th>
+            <th class="text-center">是否付款</th>
           </tr>
         </thead>
         <tbody v-if="orders.length">
@@ -26,11 +26,11 @@
             <td>
               {{ item.payment }}
             </td>
-            <td>
-              {{ item.amount }}
+            <td class="text-right" style="margin-right: 100px">
+              {{ item.amount | thousands }}
             </td>
             <td>
-              <div class="custom-control custom-switch">
+              <div class="custom-control custom-switch text-center">
                 <input type="checkbox" class="custom-control-input"
                   :id="item.id"
                   v-model="item.paid"

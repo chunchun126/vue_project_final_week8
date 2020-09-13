@@ -5,60 +5,78 @@
       <ul class="step list-unstyled d-flex text-center
         justify-content-center pb-5 text-primary">
         <li>
-          <p>購物車</p>
+          <p>購物袋</p>
           <div class="step-line"></div>
           <div class="step-sign solid"></div>
         </li>
         <li>
-          <p>填寫訂單</p>
-          <div class="step-line"></div>
-          <div class="step-sign"></div>
+          <p class="text-muted">填寫訂單</p>
+          <div class="step-line bg-secondary"></div>
+          <div class="step-sign" style="border: solid 2px gray"></div>
         </li>
         <li>
-          <p>確認訂單</p>
-          <div class="step-line"></div>
-          <div class="step-sign"></div>
+          <p class="text-muted">確認訂單</p>
+          <div class="step-line bg-secondary"></div>
+          <div class="step-sign" style="border: solid 2px gray"></div>
         </li>
         <li>
-          <p>交易成功</p>
-          <div class="step-sign"></div>
+          <p class="text-muted">交易成功</p>
+          <div class="step-sign" style="border: solid 2px gray"></div>
         </li>
       </ul>
-      <div class="row mb-5">
-        <div class="col-md-8 offset-2">
+      <div v-if="carts.length > 0" class="row mb-5">
+        <div class="col-md-8 offset-md-2">
+          <div class="text-left">
+            <button type="button" class="btn btn-sm btn-secondary
+              rounded-0 border-bottom-0"
+              style="font-size: 8px"
+              @click="deleteAllCart">全部刪除
+            </button>
+          </div>
           <div class="content p-3">
-            <div class="row">
+            <div class="row" v-for="item in carts" :key="item.id">
               <div class="col-md-6">
                 <div class="imageArea">
-                  <img class="img-fluid"
-                    src="https://images.unsplash.com/photo-1598560917682-2577f42feff6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80">
-                  <a href="" class="delete">✕</a>
+                  <router-link :to="`product/${item.product.id}`">
+                    <img class="img-fluid"
+                    :src="item.product.imageUrl[0]">
+                  </router-link>
+                  <a href="#" class="delete"
+                    @click.prevent="deleteOneCart(item)">✕</a>
                 </div>
               </div>
               <div class="col-md-6">
-                <h1 class="h5 mt-2">深海藍寶鑽戒</h1>
+                <h1 class="h5 mt-2 mb-5">{{ item.product.title }}</h1>
                 <div class="d-flex mb-2">
                   <span class="w-25">數量</span>
                   <div class="input-group input-group-sm w-75">
                     <div class="input-group-prepend">
                       <button class="btn btn-outline-secondary rounded-0 align-middle"
-                        type="button" id="button-addon1">
+                        type="button"
+                        :disabled="item.quantity === 1"
+                        @click="updateQuantity(item.product.id, item.quantity - 1)">
                         <i class="fas fa-minus"></i>
                       </button>
                     </div>
-                    <input type="text" class="form-control text-center input-style" placeholder="1"
-                      aria-label="Example text with button addon" aria-describedby="button-addon1">
+                    <input type="number"
+                      class="form-control text-center input-style"
+                      min="1"
+                      v-model="item.quantity"
+                      @change="updateQuantity(item.product.id, item.quantity)">
                     <div class="input-group-append">
                       <button class="btn btn-outline-secondary rounded-0"
-                        type="button" id="button-addon2">
+                        type="button"
+                        @click="updateQuantity(item.product.id, item.quantity + 1)">
                         <i class="fas fa-plus"></i>
                       </button>
                     </div>
                   </div>
                 </div>
                 <div class="d-flex">
-                  <span>小計</span>
-                  <span class="ml-auto">NT $ 11,200</span>
+                  <span>優惠價</span>
+                  <span class="ml-auto">
+                    NT $ {{ item.product.price+'/'+item.product.unit | thousands }}
+                  </span>
                 </div>
               </div>
               <div class="col-12">
@@ -67,22 +85,53 @@
             </div>
             <div class="row">
               <div class="col-md-6 offset-md-6">
-                <div class="form-group d-flex mb-0">
-                  <label for="coupon" class="col-sm-6 col-form-label pl-0">優惠碼</label>
-                  <input type="text" class="form-control input-style" id="coupon">
+                <div class="form-group">
+                  <div class="input-group">
+                    <input type="text"
+                      v-model="couponCode"
+                      class="form-control input-style" id="coupon"
+                      placeholder="請輸入優惠碼">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary input-style"
+                        type="button"
+                        @click="addCoupon">
+                        套用優惠碼
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="col-md-6 offset-md-6 d-flex">
+              <div class="col-md-6 offset-md-6 d-flex text-primary"
+                v-if="coupon.enabled">
                 <span>優惠碼折扣</span>
-                <span class="ml-auto"> － NT $ 1000</span>
+                <span class="ml-auto"> － NT $ {{ coupon.percent }}</span>
               </div>
-              <div class="col-12 d-flex">
-                <div class="ml-auto" style="border-bottom: solid 1px">合計  NT $ 22,400</div>
+              <div class="col-md-6 offset-md-6 d-flex mt-3">
+                <span class="pt-1">合計</span>
+                <div class="ml-auto px-2 pt-1"
+                  v-if="coupon.enabled"
+                  style="border: solid 1px;font-size: 22px">
+                  NT $ {{ cartTotal - coupon.percent | thousands }}
+                </div>
+                <div class="ml-auto px-2 pt-1"
+                  v-else
+                  style="border: solid 1px;font-size: 22px">
+                  NT $ {{ cartTotal | thousands }}
+                </div>
               </div>
             </div>
           </div>
           <router-link :to="`/orders`"
             class="btn btn-sm btn-primary rounded-0 mt-3 d-block">下一步
+          </router-link>
+        </div>
+      </div>
+      <div v-else class="py-5">
+        <div class="text-center my-5">
+          <h6 class="mb-3">購物袋中目前沒有產品。</h6>
+          <router-link to="/products"
+            class="btn btn-primary">
+            選購去
           </router-link>
         </div>
       </div>
@@ -101,6 +150,8 @@ export default {
       status: {
         loadingItem: '', // loadingItem 給預設值，需預先定義，不然會出錯
       },
+      couponCode: '',
+      coupon: {},
     };
   },
   created() {
@@ -110,39 +161,31 @@ export default {
     // 加到購物車（post）
     addToCart(id, quantity = 1) { // 需代入 商品 id 及 商品數量（因為 api 文件上為 required）
       // quantity=1 參數預設值給 1（因為最少會加入 1 個產品，不會加 0 個）
-      // 宣告新增某一筆購物車資料的 api
       const url = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping`;
-      // 還沒取得資料時的讀取效果
       this.isLoading = true;
       const cart = {
         product: id, // id 透過參數的方式代入
         quantity, // quantity: quantity 的簡寫，數量也是透過參數的方式代入
       };
       // console.log(cart);  // 比對傳回來的值是否和文件一樣
-      // AJAX
       this.$http.post(url, cart) // （網址, 要傳送的物件）
-        // 成功
         .then((res) => {
-          this.isLoading = false; // 移除 loading 效果
+          this.isLoading = false;
           console.log(res);
         })
-        // 失敗
         .catch((error) => {
-          this.isLoading = false; // 移除 loading 效果
+          this.isLoading = false;
           console.log(error.response); // 回傳錯誤的訊息
         });
     },
 
     // 取出購物車的內容（get）
     getCart() {
-      // 宣告取得購物車列表 api
       const url = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping`;
-      // 還沒取得資料時的讀取效果
       this.isLoading = true;
-      // AJAX
       this.$http.get(url)
         .then((res) => {
-          this.isLoading = false; // 移除 loading 效果
+          this.isLoading = false;
           console.log('取出購物車的內容 成功', res);
           this.carts = res.data.data;
 
@@ -152,10 +195,9 @@ export default {
           // 執行 updateTotal 累加總金額
           this.updateTotal();
         })
-        // 失敗
         .catch((error) => {
-          this.isLoading = false; // 移除 loading 效果
-          console.log('取出購物車的內容 失敗', error.response); // 回傳錯誤的訊息
+          this.isLoading = false;
+          console.log('取出購物車的內容 失敗', error.response);
         });
     },
 
@@ -169,26 +211,73 @@ export default {
 
     // 更新購物車商品的數量
     updateQuantity(id, quantity) {
-      // 宣告更新某一筆購物車資料 api
       const url = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping`;
-      // 還沒取得資料時的讀取效果
       this.isLoading = true;
       const cart = {
         product: id,
         quantity,
       };
-      // AJAX
       this.$http.patch(url, cart)
         .then((res) => {
-          this.isLoading = false; // 移除讀取效果
-          console.log(res);
+          this.isLoading = false;
+          console.log('更新數量成功', res);
           // 跑完之後要重新取得購物車資料
           this.getCart();
         })
-        // 失敗
         .catch((error) => {
-          this.isLoading = false; // 移除 loading 效果
-          console.log(error.response); // 回傳錯誤的訊息
+          this.isLoading = false;
+          console.log('更新數量失敗', error.response);
+        });
+    },
+
+    // 清空購物車
+    deleteAllCart() {
+      this.isLoading = true;
+      const url = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping/all/product`;
+      this.$http.delete(url)
+        .then((res) => {
+          this.isLoading = false;
+          this.$bus.$emit('update-total');
+          console.log('清空購物車成功', res);
+          this.getCart();
+        })
+        .catch((error) => {
+          this.isLoading = false;
+          console.log(error.response);
+        });
+    },
+
+    // 刪除單一筆購物車品項
+    deleteOneCart(item) {
+      this.isLoading = true;
+      const url = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping/${item.product.id}`;
+      this.$http.delete(url)
+        .then((res) => {
+          this.isLoading = false;
+          this.$bus.$emit('update-total');
+          console.log('刪除單一筆購物車成功', res);
+          this.getCart();
+        })
+        .catch((error) => {
+          this.isLoading = false;
+          console.log(error.response);
+        });
+    },
+
+    // 搜尋優惠券
+    addCoupon() {
+      const url = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/coupon/search`;
+      this.isLoading = true;
+      this.$http.post(url, { code: this.couponCode })
+        .then((res) => {
+          this.isLoading = false;
+          console.log('搜尋優惠券 成功', res);
+          this.coupon = res.data.data;
+        })
+        .catch((error) => {
+          this.isLoading = false;
+          console.log(error.response);
+          alert('此優惠碼無效');
         });
     },
   },

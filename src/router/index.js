@@ -15,7 +15,7 @@ const routes = [
         component: () => import('../views/frontend/Home.vue'),
       },
       {
-        name: '最新款式',
+        name: '所有產品',
         path: 'products',
         component: () => import('../views/frontend/Products.vue'),
       },

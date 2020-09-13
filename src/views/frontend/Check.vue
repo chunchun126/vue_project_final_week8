@@ -4,7 +4,7 @@
       <ul class="step list-unstyled d-flex text-center
         justify-content-center pb-5 text-primary">
         <li>
-          <p>購物車</p>
+          <p>購物袋</p>
           <div class="step-line"></div>
           <div class="step-sign solid"></div>
         </li>
@@ -19,82 +19,69 @@
           <div class="step-sign solid"></div>
         </li>
         <li>
-          <p>交易成功</p>
-          <div class="step-sign"></div>
+          <p class="text-muted">交易成功</p>
+          <div class="step-sign" style="border: solid 2px gray"></div>
         </li>
       </ul>
       <div class="row mb-5 recip">
-        <div class="col-md-8 offset-2">
-          <div class="content p-3 text-muted">
+        <div class="col-md-8 offset-md-2">
+          <div class="content p-3 text-muted bg-main">
             <h6 class="text-center mb-3">訂單明細</h6>
-            <div class="row justify-content-center">
+            <div v-for="item in order.products" :key="item.id"
+              class="row justify-content-center">
               <div class="col-md-10 content border-bottom-0">
-                <div class="row p-3">
+                <div class="row p-3 bg-white">
                   <div class="col-md-6">
                     <img class="img-fluid"
-                      src="https://images.unsplash.com/photo-1598560917682-2577f42feff6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80">
+                      :src="item.product.imageUrl[0]">
                   </div>
                   <div class="col-md-6">
-                    <h1 class="h6">深海藍寶鑽戒</h1>
-                    <hr class="m-0">
-                    <div class="d-flex">
-                      <span class="w-25">數量</span>
-                      <span class="w-75 text-right">1</span>
-                    </div>
-                    <hr class="m-0">
-                    <div class="d-flex">
-                      <span>小計</span>
-                      <span class="ml-auto">NT $ 11,200</span>
-                    </div>
+                    <table class="table table-sm text-muted">
+                      <tbody>
+                        <tr>
+                          <th class="border-top-0">品名</th>
+                          <td class="text-right border-top-0">{{ item.product.title }}</td>
+                        </tr>
+                        <tr>
+                          <th>數量</th>
+                          <td class="text-right">{{ item.quantity }}</td>
+                        </tr>
+                        <tr>
+                          <th>小計</th>
+                          <td class="text-right">NT $ {{ item.product.price | thousands }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
             </div>
             <div class="row justify-content-center">
-              <div class="col-md-10 content border-bottom-0">
-                <div class="row p-3">
-                  <div class="col-md-6">
-                    <img class="img-fluid"
-                      src="https://images.unsplash.com/photo-1598560917682-2577f42feff6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80">
-                  </div>
-                  <div class="col-md-6">
-                    <h1 class="h6">深海藍寶鑽戒</h1>
-                    <hr class="m-0">
-                    <div class="d-flex">
-                      <span class="w-25">數量</span>
-                      <span class="w-75 text-right">1</span>
-                    </div>
-                    <hr class="m-0">
-                    <div class="d-flex">
-                      <span>小計</span>
-                      <span class="ml-auto">NT $ 11,200</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row justify-content-center">
-              <div class="col-md-10 content">
+              <div class="col-md-10 content bg-white">
                 <div class="d-flex px-3 pt-1">
                   <span>總價</span>
-                  <span class="ml-auto">NT $ 11,200</span>
+                  <span class="ml-auto">NT $ {{ order.amount | thousands }}</span>
                 </div>
               </div>
             </div>
             <div class="row mt-3">
-              <div class="col-md-10 offset-1">
+              <div class="col-md-10 offset-md-1">
                 <table class="table table-borderless table-sm text-muted">
                   <tr>
-                    <th width="170px">訂購人姓名</th>
-                    <td>徐XX</td>
+                    <th width="170px">收件人姓名</th>
+                    <td>{{ user.name }}</td>
                   </tr>
                   <tr>
-                    <th width="170px">訂購人姓名</th>
-                    <td>徐XX</td>
+                    <th width="170px">收件人電話</th>
+                    <td>{{ user.tel }}</td>
                   </tr>
                   <tr>
-                    <th width="170px">訂購人姓名</th>
-                    <td>徐XX</td>
+                    <th width="170px">電子信箱</th>
+                    <td>{{ user.email }}</td>
+                  </tr>
+                  <tr>
+                    <th width="170px">收件人地址</th>
+                    <td>{{ user.address }}</td>
                   </tr>
                 </table>
               </div>
@@ -102,12 +89,12 @@
 
           </div>
           <div class="row mt-3">
-              <div class="col-md-6">
+              <div class="col-6">
                 <router-link :to="`/orders`"
                   class="btn btn-sm btn-outline-primary rounded-0 d-block">回上一步
                 </router-link>
               </div>
-              <div class="col-md-6">
+              <div class="col-6">
                 <router-link :to="`/success`"
                   class="btn btn-sm btn-primary rounded-0 d-block">確定付款
                 </router-link>
@@ -122,7 +109,48 @@
 
 <script>
 export default {
+  data() {
+    return {
+      orders: [],
+      order: {
+        products: [],
+      },
+      user: {},
+    };
+  },
+  created() {
+    this.getOrders();
+  },
+  methods: {
+    // 取全部訂單
+    getOrders() {
+      const url = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/orders`;
+      this.$http.get(url).then((res) => {
+        console.log('取全部訂單 成功', res.data.data);
+        this.orders = res.data.data;
+        this.order = {
+          ...res.data.data[0],
+        };
+        this.getOrder(this.order.id);
+        console.log('單一筆挨低', this.order.id);
+        this.$bus.$emit('update-total');
+      }).catch((error) => {
+        console.log('取全部訂單 失敗', error.response);
+      });
+    },
 
+    // 取單一訂單
+    getOrder(id) {
+      const url = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/orders/${id}`;
+      this.$http.get(url).then((res) => {
+        console.log('user 成功', res.data.data);
+        this.user = res.data.data.user;
+        console.log(this.user);
+      }).catch((error) => {
+        console.log('user 失敗', error.response);
+      });
+    },
+  },
 };
 </script>
 

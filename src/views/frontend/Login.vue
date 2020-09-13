@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-main" style="height: 100vh">
     <loading :active.sync="isLoading"></loading>
     <div class="container py-4">
       <!-- 送出表單只需要在 form 標籤上 綁上 submit 方法
@@ -85,7 +85,7 @@ export default {
 <style lang="scss">
 .formLogin {
   width: 340px;
-  margin-top: 50px;
+  margin-top: 250px;
   margin-right: auto;
   margin-left: auto;
   padding: 15px;

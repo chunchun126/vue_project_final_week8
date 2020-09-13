@@ -1,30 +1,30 @@
 <template>
   <div class="container pt-5">
-    <ul class="step list-unstyled d-flex text-center justify-content-center pb-5">
-      <li>
-        <p>購物車</p>
-        <div class="step-line"></div>
-        <div class="step-sign solid"></div>
-      </li>
-      <li>
-        <p>填寫訂單</p>
-        <div class="step-line"></div>
-        <div class="step-sign solid"></div>
-      </li>
-      <li>
-        <p>確認訂單</p>
-        <div class="step-line"></div>
-        <div class="step-sign"></div>
-      </li>
-      <li>
-        <p>交易成功</p>
-        <div class="step-sign"></div>
-      </li>
-    </ul>
+    <loading :active.sync="isLoading"></loading>
+    <ul class="step list-unstyled d-flex text-center
+        justify-content-center pb-5 text-primary">
+        <li>
+          <p>購物袋</p>
+          <div class="step-line"></div>
+          <div class="step-sign solid"></div>
+        </li>
+        <li>
+          <p>填寫訂單</p>
+          <div class="step-line"></div>
+          <div class="step-sign solid"></div>
+        </li>
+        <li>
+          <p class="text-muted">確認訂單</p>
+          <div class="step-line bg-secondary"></div>
+          <div class="step-sign" style="border: solid 2px gray"></div>
+        </li>
+        <li>
+          <p class="text-muted">交易成功</p>
+          <div class="step-sign" style="border: solid 2px gray"></div>
+        </li>
+      </ul>
     <div class="mb-5 row justify-content-center">
       <div class="col-md-8">
-        <!-- <p class="form-title">請輸入收件人資訊</p>
-        <hr class="mt-0 mb-4" style="border-top: 2px solid rgba(0, 0, 0, 0.5);"> -->
         <!-- validation-observer 驗證整體表單 -->
         <validation-observer v-slot="{ invalid }">
           <!-- 表單送出改為使用 form submit 的方法 -->
@@ -158,14 +158,14 @@
             </div>
             <!-- 送出表單使用 submit 的方法，如果驗證未通過則 disabled 該按鈕 -->
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-6">
                 <router-link :to="`/cart`"
                   class="btn btn-sm btn-outline-primary rounded-0 d-block">回上一步
                 </router-link>
               </div>
-              <div class="col-md-6">
+              <div class="col-6">
                 <button type="submit" class="btn btn-sm btn-primary rounded-0 btn-block"
-                  :disabled="invalid">送出表單
+                  :disabled="invalid">送出訂單
                 </button>
               </div>
             </div>
@@ -189,6 +189,7 @@ export default {
         message: '',
       },
       coupon: {},
+      isLoading: false,
     };
   },
   created() {
@@ -201,18 +202,25 @@ export default {
       this.$http.post(url, { code: this.coupon_code }).then((response) => {
         this.coupon = response.data.data;
       }).catch((error) => {
-        console.log('建立一筆訂單 失敗', error.response);
+        console.log('新增優惠券 失敗', error.response);
       });
     },
+
     // 建立一筆訂單
     createOrder() {
+      this.isLoading = true;
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/orders`;
       const order = { ...this.form };
       this.$http.post(api, order)
         .then((res) => {
+          this.isLoading = false;
           console.log('建立一筆訂單 成功', res);
+          this.$router.push('/check');
+          const { id } = res.data.data;
+          this.$bus.$emit('form', id);
         })
         .catch((error) => {
+          this.isLoading = false;
           console.log('建立一筆訂單 失敗', error.response);
         });
     },

@@ -36,8 +36,8 @@
             </td>
             <td>{{ item.category }}</td>
             <td>{{ item.title }}</td>
-            <td>{{ item.origin_price }}</td>
-            <td>{{ item.price }}</td>
+            <td>{{ item.origin_price | thousands }}</td>
+            <td>{{ item.price | thousands }}</td>
             <td>
               <div class="custom-control custom-switch">
                 <input type="checkbox" class="custom-control-input"

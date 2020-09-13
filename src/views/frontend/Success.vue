@@ -4,7 +4,7 @@
       <ul class="step list-unstyled d-flex text-center
         justify-content-center pb-5 text-primary">
         <li>
-          <p>購物車</p>
+          <p>購物袋</p>
           <div class="step-line"></div>
           <div class="step-sign solid"></div>
         </li>
