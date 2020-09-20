@@ -32,20 +32,16 @@ export default {
       this.token = document.cookie.replace(/(?:(?:^|.*;\s*)myToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
       // 將 Token 加到 Headers（需要驗證的 api 需帶上這一串，預設代入 token）
       this.$http.defaults.headers.common.Authorization = `Bearer ${this.token}`;
-      console.log(`取出 token ${this.token}`);
-
       const api = `${process.env.VUE_APP_APIPATH}/auth/check`;
       this.$http.post(api, { api_token: this.token })
         .then((res) => {
           this.checkSuccesss = true;
-          console.log('驗證成功', res);
           // Toast 訊息
           this.$bus.$emit('message:push',
             `驗證成功 ${res.data.message}`, // 後端回傳的錯誤訊息
             'successs'); // 狀態
         })
-        .catch((error) => {
-          console.log('驗證失敗', error.response);
+        .catch(() => {
           // 驗證失敗就切換到 login
           this.$router.push('/login');
         });

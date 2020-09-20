@@ -54,7 +54,7 @@
               <label for="due_date">到期日</label>
               <input
                 id="due_date"
-                v-model="due_date"
+                v-model="tempCoupon.due_date"
                 type="date"
                 class="form-control"
               >
@@ -63,7 +63,7 @@
               <label for="due_time">到期時間</label>
               <input
                 id="due_time"
-                v-model="due_time"
+                v-model="tempCoupon.due_time"
                 type="time"
                 step="1"
                 class="form-control"
@@ -119,6 +119,7 @@
 
 <script>
 export default {
+  name: 'CouponModal',
   data() {
     return {
       due_date: '',
@@ -130,7 +131,6 @@ export default {
     updateCoupon() {
       const newDeadline = `${this.due_date} ${this.due_time}`;
       this.$emit('emit-update-coupon', newDeadline);
-      console.log('內元件', newDeadline);
     },
   },
 };

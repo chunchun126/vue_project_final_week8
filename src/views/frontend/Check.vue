@@ -48,7 +48,10 @@
                         </tr>
                         <tr>
                           <th>小計</th>
-                          <td class="text-right">NT $ {{ item.product.price | thousands }}</td>
+                          <td class="text-right"
+                            v-if="item.product.price">
+                            NT $ {{ item.product.price | thousands }}
+                          </td>
                         </tr>
                       </tbody>
                     </table>
@@ -60,7 +63,10 @@
               <div class="col-md-10 content bg-white">
                 <div class="d-flex px-3 pt-1">
                   <span>總價</span>
-                  <span class="ml-auto">NT $ {{ order.amount | thousands }}</span>
+                  <span class="ml-auto"
+                    v-if="order.amount">
+                    NT $ {{ order.amount | thousands }}
+                  </span>
                 </div>
               </div>
             </div>
@@ -86,29 +92,28 @@
                 </table>
               </div>
             </div>
-
           </div>
           <div class="row mt-3">
               <div class="col-6">
                 <router-link :to="`/orders`"
-                  class="btn btn-sm btn-outline-primary rounded-0 d-block">回上一步
+                  class="btn btn-sm btn-outline-primary rounded-0 d-block btn-next">回上一步
                 </router-link>
               </div>
               <div class="col-6">
                 <router-link :to="`/success`"
-                  class="btn btn-sm btn-primary rounded-0 d-block">確定付款
+                  class="btn btn-sm btn-primary rounded-0 d-block btn-next">確定付款
                 </router-link>
               </div>
             </div>
         </div>
       </div>
-
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  name: 'Check',
   data() {
     return {
       orders: [],
@@ -126,16 +131,12 @@ export default {
     getOrders() {
       const url = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/orders`;
       this.$http.get(url).then((res) => {
-        console.log('取全部訂單 成功', res.data.data);
         this.orders = res.data.data;
         this.order = {
           ...res.data.data[0],
         };
         this.getOrder(this.order.id);
-        console.log('單一筆挨低', this.order.id);
         this.$bus.$emit('update-total');
-      }).catch((error) => {
-        console.log('取全部訂單 失敗', error.response);
       });
     },
 
@@ -143,11 +144,7 @@ export default {
     getOrder(id) {
       const url = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/orders/${id}`;
       this.$http.get(url).then((res) => {
-        console.log('user 成功', res.data.data);
         this.user = res.data.data.user;
-        console.log(this.user);
-      }).catch((error) => {
-        console.log('user 失敗', error.response);
       });
     },
   },

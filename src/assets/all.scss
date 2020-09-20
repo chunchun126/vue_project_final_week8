@@ -12,6 +12,19 @@ body {
   position: relative;
   line-height: 1.8;
 }
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  min-height: 100%;
+  /* Equal to height of footer */
+  /* But also accounting for potential margin-bottom of last child */
+  margin-bottom: -113px;
+}
+.footer, .push {
+  height: 113px;
+}
 
 // color
 $color_primary: #49110a;
@@ -22,9 +35,17 @@ $color_main: #FFF3E9;
   color: #49110a;
 }
 
+.btn-next {
+  font-size: 18px;
+}
+
 // Navbar
-.nav-area {
-  background-color: rgba(#fff, 0.9);
+.overflowHidden {
+  overflow: hidden;
+}
+.item-img {
+  background-size: cover;
+  background-position: center center;
 }
 .navbar, .nav {
   font-size: 18px;
@@ -62,7 +83,7 @@ $color_main: #FFF3E9;
   word-spacing: 10px;
   font-size: 18px;
 }
-.item-img:hover {
+.item-hover:hover {
   .mask {
     opacity: 1;
   }
@@ -106,7 +127,7 @@ $color_main: #FFF3E9;
   color: #333;
 }
 .origin-price {
-  font-size: 14px;
+  font-size: 16px;
   text-decoration: line-through;
 }
 .product-title,.price {
@@ -206,11 +227,11 @@ $color_main: #FFF3E9;
 
 
 // Footer
-.footer {
-  margin-top: 70px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
+// .footer {
+//   margin-top: 70px;
+//   padding-top: 5px;
+//   padding-bottom: 5px;
+// }
 .footer-text {
   color: rgba(black, 0.5);
   font-size: 14px;

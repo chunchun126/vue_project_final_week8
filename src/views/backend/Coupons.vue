@@ -87,7 +87,6 @@ export default {
     DeleCouponModal,
     Pagination,
   },
-  props: ['token'],
   data() {
     return {
       isLoading: false,
@@ -102,6 +101,8 @@ export default {
         enabled: false,
         deadline_at: '',
       },
+      due_date: '',
+      due_time: '',
     };
   },
   created() {
@@ -115,13 +116,11 @@ export default {
       this.$http.get(api)
         .then((res) => {
           this.isLoading = false;
-          console.log('取優惠券 成功', res);
           this.coupons = res.data.data;
           this.pagination = res.data.meta.pagination;
         })
-        .catch((error) => {
+        .catch(() => {
           this.isLoading = false;
-          console.log('取優惠券 失敗', error.response);
         });
     },
     // 開啟 Modal [ok]
@@ -131,13 +130,17 @@ export default {
           this.tempCoupon = {}; // 給新的參考路徑
           this.isNew = true;
           $('#couponModal').modal('show');
-          // console.log('新增 Coupon');
           break;
-        case 'edit': // 編輯
+        // 由於 const 與 let 宣告環境較特別，故需要在 case 外層宣告一個 {} 確保作用域
+        case 'edit': {
           this.tempCoupon = { ...item };
+          // 使用 split 切割相關時間戳
+          const dedlineAt = this.tempCoupon.deadline.datetime.split(' ');
+          [this.due_date, this.due_time] = dedlineAt; // 日期
           $('#couponModal').modal('show');
           break;
-        case 'dele': // 刪除
+        }
+        case 'dele':
           this.tempCoupon = { ...item }; // 物件拷貝
           $('#deleCouponModal').modal('show');
           break;
@@ -146,7 +149,7 @@ export default {
       }
     },
     // 更新優惠券 或 新增優惠券
-    updateCoupons(newDeadline) {
+    updateCoupons() {
       this.isLoading = true;
       let api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/coupon`;
       let httpMethod = 'post';
@@ -155,24 +158,20 @@ export default {
         api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/coupon/${this.tempCoupon.id}`;
         httpMethod = 'patch';
       }
-      // 日期格式為字串「2020-06-16 09:31:18」 重新組合再寫入物件中
-      this.tempCoupon.deadline_at = newDeadline;
-      console.log('外元件', newDeadline);
+      // 針對日期做組合重新寫入到物件中
+      // 日期格式 Y-m-d H:i:s，例如：「2020-06-16 09:31:18」
+      this.tempCoupon.deadline_at = `${this.due_date} ${this.due_time}`;
 
       this.$http[httpMethod](api, this.tempCoupon)
-        .then((res) => {
+        .then(() => {
           this.isLoading = false;
           $('#couponModal').modal('hide');
-          console.log('更新優惠券 成功', res);
-
-          // 成功發送後 再重新執行一次 getCoupons 取所有優惠券列表
           // 更新畫面
           this.getCoupons();
         })
-        .catch((error) => {
+        .catch(() => {
           this.isLoading = false;
           $('#couponModal').modal('hide');
-          console.log('更新優惠券 失敗', error.response);
         });
     },
     // 切換是否啟用
@@ -180,13 +179,11 @@ export default {
       this.isLoading = true;
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/coupon/${item.id}`;
       this.$http.patch(api, item)
-        .then((res) => {
+        .then(() => {
           this.isLoading = false;
-          console.log('更新優惠券 成功', res);
         })
-        .catch((error) => {
+        .catch(() => {
           this.isLoading = false;
-          console.log('更新優惠券 失敗', error.response);
         });
     },
     // 刪除優惠券
@@ -194,17 +191,15 @@ export default {
       this.isLoading = true;
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/coupon/${this.tempCoupon.id}`;
       this.$http.delete(api)
-        .then((res) => {
+        .then(() => {
           this.isLoading = false;
           $('#deleCouponModal').modal('hide');
-          console.log('刪除優惠券 成功', res);
           // 刪除完 要再跑一次 getCoupons 更新畫面
           this.getCoupons();
         })
-        .catch((error) => {
+        .catch(() => {
           this.isLoading = false;
           $('#deleCouponModal').modal('hide');
-          console.log('刪除優惠券 失敗', error.response);
         });
     },
   },

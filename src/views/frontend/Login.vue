@@ -39,6 +39,7 @@
 
 <script>
 export default {
+  name: 'Login',
   data() {
     // 將資料 return 帶出來
     return {
@@ -66,14 +67,12 @@ export default {
           const { token } = res.data;
           // 寫入 cookie token // expires 設置有效時間
           document.cookie = `myToken=${token};expires=${new Date(expired * 1000)};`;
-          console.log(`寫入 token ${token}`);
           // 轉址到後台
           this.$router.push('/admin/products');
         })
         // 失敗
-        .catch((error) => {
+        .catch(() => {
           this.isLoading = false;
-          console.log(error.response);
           // 轉址到 login 頁
           this.$router.push('/login');
         });

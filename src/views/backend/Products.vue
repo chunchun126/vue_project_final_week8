@@ -313,7 +313,6 @@ export default {
     return {
       products: [],
       pagination: {},
-      // token: '',
       tempProduct: { // 暫時存放資料（input 輸入的資料）的地方，避免直接變更原始資料
         imageUrl: [],
         options: {
@@ -328,25 +327,7 @@ export default {
       },
     };
   },
-  props: ['token'],
   created() {
-    // 取 token（因外層元件 Dashboard 已存取，所以內層元件不須再存一次）
-    // this.token = document.cookie.replace(/(?:(?:^|.*;\s*)myToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
-    // this.$http.defaults.headers.common.Authorization = `Bearer ${this.token}`;
-
-    // 取 後台 產品列表 API
-    // const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/products`;
-    // this.$http
-    //   .get(api)
-    //   .then((res) => {
-    //     console.log('AJAX 回傳資料');
-    //     this.products = res.data.data;
-    //   })
-    //   .catch((error) => {
-    //     console.log('AJAX 失敗');
-    //     console.log(error.response);
-    //   });
-    // 執行
     this.getProducts();
   },
   methods: {
@@ -357,13 +338,11 @@ export default {
       this.$http.get(api)
         .then((res) => {
           this.isLoading = false;
-          console.log('取全部產品資料 成功');
           this.products = res.data.data;
           this.pagination = res.data.meta.pagination;
         })
-        .catch((error) => {
+        .catch(() => {
           this.isLoading = false;
-          console.log('取得失敗', error.response);
         });
     },
     // 取「單一」產品資料 並呈現在 Modal 內 [ok]
@@ -371,12 +350,8 @@ export default {
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/product/${id}`;
       this.$http.get(api)
         .then((res) => {
-          console.log('取單一產品資料 成功', res);
           this.tempProduct = res.data.data;
           $('#addModal').modal('show');
-        })
-        .catch((error) => {
-          console.log('取得失敗', error.response);
         });
     },
     // 開啟 Modal [ok]
@@ -424,7 +399,6 @@ export default {
       this.$http[httpMethod](api, this.tempProduct)
         .then(() => {
           this.isLoading = false;
-          console.log('新增產品 成功');
           $('#addModal').modal('hide');
           this.$bus.$emit('message:push',
             '新增成功囉，好棒ヽ(＾Д＾)ﾉ ',
@@ -432,10 +406,9 @@ export default {
           // 重新執行 取所有產品
           this.getProducts();
         })
-        .catch((error) => {
+        .catch(() => {
           this.isLoading = false;
           $('#addModal').modal('hide');
-          console.log('updateProduct 失敗', error.response.data);
         });
     },
     // 切換是否啟用
@@ -443,13 +416,11 @@ export default {
       this.isLoading = true;
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/product/${item.id}`;
       this.$http.patch(api, item)
-        .then((res) => {
+        .then(() => {
           this.isLoading = false;
-          console.log('切換 成功', res);
         })
-        .catch((error) => {
+        .catch(() => {
           this.isLoading = false;
-          console.log('切換 失敗', error.response);
         });
     },
     // 刪除產品 [ok]
@@ -466,41 +437,31 @@ export default {
           this.$bus.$emit('message:push',
             '刪除成功囉，好棒ヽ(＾Д＾)ﾉ',
             'success');
-          console.log('成功刪除');
         })
-        .catch((error) => {
-          console.log('刪除失敗', error.response);
+        .catch(() => {
         });
     },
     // 上傳圖片檔案
     uploadFile() {
       const uploadedFile = this.$refs.file.files[0];
-
       const formData = new FormData();
-
       formData.append('file', uploadedFile);
-
       const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_UID}/admin/storage`;
-
       this.status.fileUploading = true;
-
       this.$http.post(url, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       }).then((response) => {
         this.status.fileUploading = false;
-
         if (response.status === 200) {
           this.tempProduct.imageUrl.push(response.data.data.path);
         }
       }).catch(() => {
-        console.log('上傳失敗');
         // this.$bus.$emit('message:push',
         //   `檔案上傳失敗惹，好糗Σ( ° △ °|||)︴
         //   請檢查是不是檔案大小超過 2MB`,
         //   'danger');
-
         this.status.fileUploading = false;
       });
     },

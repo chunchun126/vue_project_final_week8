@@ -120,6 +120,7 @@
 
 <script>
 export default {
+  name: 'Carousel',
   data() {
     return {
       isLoading: false,
@@ -188,15 +189,13 @@ export default {
         quantity, // quantity: quantity 的簡寫，數量也是透過參數的方式代入
       };
       this.$http.post(url, cart)
-        .then((res) => {
+        .then(() => {
           this.isLoading = false;
-          console.log('加到購物車 成功', res);
           alert('成功加到購物車。');
           window.location.reload();
         })
         .catch((error) => {
           this.isLoading = false;
-          console.log(error.response);
           alert(error.response.data.errors[0]);
         });
     },

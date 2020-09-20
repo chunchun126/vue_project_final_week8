@@ -1,9 +1,8 @@
 <template>
-  <div class="index">
-    <!-- Navbar 元件 -->
-    <navbar/>
-    <router-view :products="products" :pagination="pagination" />
-    <!-- footer 元件 -->
+  <div class="wrapper">
+    <Navbar/>
+    <router-view :products="products" v-if="getSuccesss"/>
+    <div class="push"></div>
     <Footer/>
   </div>
 </template>
@@ -22,6 +21,7 @@ export default {
     return {
       products: [],
       pagination: {},
+      getSuccesss: false,
     };
   },
   created() {
@@ -32,13 +32,12 @@ export default {
     getProducts() {
       this.$http.get(`${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/products?paged=33`)
         .then((res) => {
+          this.getSuccesss = true;
           this.products = res.data.data;
           this.pagination = res.data.meta.pagination;
-          console.log('取所有產品列表 成功', res);
         })
-        .catch((error) => {
+        .catch(() => {
           this.isLoading = false;
-          console.log(error.response);
         });
     },
   },

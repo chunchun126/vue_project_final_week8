@@ -9,8 +9,6 @@
 
 export default {
   name: 'App',
-  components: {
-  },
   data() {
     return {
       isLoading: false,
@@ -20,13 +18,11 @@ export default {
     this.isLoading = true;
     // 測試安裝 Vue axios
     this.$http.get(`${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/products`)
-      .then((res) => {
+      .then(() => {
         this.isLoading = false;
-        console.log(res);
       })
-      .catch((error) => {
+      .catch(() => {
         this.isLoading = false;
-        console.log(error.response);
       });
   },
 };
@@ -34,5 +30,4 @@ export default {
 
 <style lang="scss">
 @import '@/assets/all';
-
 </style>

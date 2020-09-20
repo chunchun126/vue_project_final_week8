@@ -120,13 +120,11 @@ export default {
       this.isLoading = true;
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/storage?page=${nowPage}`;
       this.$http.get(api).then((res) => {
-        console.log('取得所有檔案 成功', res);
         this.isLoading = false;
         this.storages = res.data.data;
         this.pagination = res.data.meta.pagination;
-      }).catch((error) => {
+      }).catch(() => {
         this.isLoading = false;
-        console.log('取得所有檔案 失敗', error);
       });
     },
     // 打開 Modal
@@ -138,18 +136,16 @@ export default {
     deleteData() {
       this.isLoading = true;
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/storage${this.tempData.id}`;
-      this.$http.delete(api).then((res) => {
+      this.$http.delete(api).then(() => {
         this.isLoading = false;
         // 關閉 Modal
         $('#deleteModal').modal('hide');
-        console.log('刪除指定檔案 成功', res);
         // 刪除完要再重新跑 getData 更新畫面
         this.getData();
-      }).catch((error) => {
+      }).catch(() => {
         this.isLoading = false;
         // 關閉 Modal
         $('#deleteModal').modal('hide');
-        console.log('刪除指定檔案 失敗', error);
       });
     },
   },

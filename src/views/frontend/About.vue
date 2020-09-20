@@ -116,8 +116,7 @@
 <script>
 
 export default {
-  components: {
-  },
+  name: 'About',
   data() {
     return {
     };

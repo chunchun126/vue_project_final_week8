@@ -63,7 +63,6 @@ export default {
   components: {
     Pagination,
   },
-  props: ['token'],
   data() {
     return {
       orders: {
@@ -84,13 +83,11 @@ export default {
       this.$http.get(api)
         .then((res) => {
           this.isLoading = false;
-          console.log('取訂單 成功', res);
           this.orders = res.data.data;
           this.pagination = res.data.meta.pagination;
         })
-        .catch((error) => {
+        .catch(() => {
           this.isLoading = false;
-          console.log('取訂單 失敗', error.response);
         });
     },
     // 設定訂單為 已付款/尚未付款
@@ -101,13 +98,9 @@ export default {
         api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/orders/${item.id}/unpaid`;
       }
       this.$http.patch(api, item.id)
-        .then((res) => {
-          console.log('設定付款狀態 成功', res);
+        .then(() => {
           // 修改完後必須 重新 取得所有訂單
           this.getOrders();
-        })
-        .catch((error) => {
-          console.log('設定付款狀態 失敗', error.response);
         });
     },
   },

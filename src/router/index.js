@@ -82,6 +82,8 @@ const routes = [
       },
     ],
   },
+  // redirect 的功能是當使用者輸入不存在的路徑時，會自動導向至指定路徑。
+  { path: '*', redirect: '/' },
 ];
 
 const router = new VueRouter({

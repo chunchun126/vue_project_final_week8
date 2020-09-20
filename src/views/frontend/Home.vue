@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="container">
+    <div class="container" id="bn">
       <!-- banner -->
       <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -9,28 +9,42 @@
           <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
         </ol>
         <div class="carousel-inner">
-          <div class="carousel-item active" data-interval="2000">
-            <div class="banner-img1"></div>
-            <div class="carousel-caption d-none d-md-block text-left" style="top: 60%">
-              <p class="mb-0 h1 text-primary title-eng">L'amour</p>
-              <p class="text-primary">︱ 婚戒系列 ︱</p>
-              <span class="text-primary">Design by Bien-aimé</span>
+            <div class="carousel-item active" data-interval="2000">
+              <div class="banner-img1"></div>
+              <div class="carousel-caption bn-text text-left" style="top: 50%">
+                <p class="mb-0 h1 text-primary title-eng">L'amour</p>
+                <p class="text-primary mb-2 d-md-block d-none">︱ 婚 戒 系 列 ︱</p>
+                <small class="text-primary d-md-block d-none">Design by Bien-aimé</small>
+
+                <a href="#wed" class="btn btn-sm rounded-0 btn-primary"
+                  style="width: 130px">
+                  查看更多
+                </a>
+              </div>
             </div>
-          </div>
           <div class="carousel-item" data-interval="2000">
             <div class="banner-img2"></div>
-            <div class="carousel-caption d-none d-md-block text-left" style="top: 40%">
-              <p class="mb-0 h1 text-main title-eng">la Manière</p>
-              <p class="text-white">︱ 摩登系列 ︱</p>
-              <span class="text-main">Design by Bien-aimé</span>
+            <div class="carousel-caption bn-text text-left"
+              style="top: 40%;left: 120px">
+              <p class="mb-0 h1 text-white title-eng">la Manière</p>
+              <p class="text-primary d-md-block d-none">︱ 摩 登 系 列 ︱</p>
+              <small class="text-white d-md-block d-none">Design by Bien-aimé</small>
+              <a href="#fash" class="btn btn-sm rounded-0 btn-primary"
+                style="width: 130px">
+                查看更多
+              </a>
             </div>
           </div>
           <div class="carousel-item" data-interval="2000">
             <div class="banner-img3"></div>
-            <div class="carousel-caption d-none d-md-block text-right" style="top: 50%">
+            <div class="carousel-caption bn-text text-right" style="top: 50%">
               <p class="mb-0 h1 text-primary title-eng">classical</p>
-              <p class="text-primary">︱ 經典系列 ︱</p>
-              <span class="text-primary">Design by Bien-aimé</span>
+              <p class="text-primary d-md-block d-none">︱ 經 典 系 列 ︱</p>
+              <small class="text-primary d-md-block d-none">Design by Bien-aimé</small>
+              <a href="#class" class="btn btn-sm rounded-0 btn-primary"
+                style="width: 130px">
+                查看更多
+              </a>
             </div>
           </div>
         </div>
@@ -45,9 +59,8 @@
           <span class="sr-only">Next</span>
         </a>
       </div>
-      <h2 class="title my-md-5 mt-3">Collection</h2>
       <!-- section_1 -->
-      <section class="section text-center">
+      <section id="wed" class="section text-center">
         <div class="section-title" data-aos="fade-up">
           <div class="mb-0 mb-2 py-2 text-primary" style="background-color: rgba(0,0,0,0.1)">
             <h3 class="title-eng">L'amour</h3>
@@ -56,38 +69,40 @@
         </div>
         <div class="row">
           <div class="col-md-5">
-            <div class="item-img" data-aos="zoom-in"
-              data-aos-duration="3000">
-              <div class="img-l"></div>
-            </div>
+            <router-link
+              :to="`/product/3AqvRNnfpnmOw1yIs9uhWAcABLUClWDEjoBHwdBxDMluscIaTnPLcurk5INpEfV9`"
+              class="d-block item-hover">
+              <div class="mask">
+                <div class="caption">查看更多</div>
+              </div>
+              <div class="img-l"
+                data-aos="zoom-in"
+                data-aos-duration="3000">
+              </div>
+            </router-link>
           </div>
           <div class="col-md-7">
-            <a href="" class="d-block item-img">
-              <div class="mask">
-                <div class="caption">More Detail</div>
+            <router-link
+              :to="`/product/3AqvRNnfpnmOw1yIs9uhWAcABLUClWDEjoBHwdBxDMluscIaTnPLcurk5INpEfV9`"
+              class="d-block item-hover">
+              <div>
+                <div class="mask">
+                  <div class="caption">查看更多</div>
+                </div>
+                <img
+                  data-aos="zoom-in"
+                  data-aos-duration="3000"
+                  class="img-fluid"
+                  src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="">
               </div>
-              <router-link
-                  :to="`/product/3AqvRNnfpnmOw1yIs9uhWAcABLUClWDEjoBHwdBxDMluscIaTnPLcurk5INpEfV9`"
-                  class="d-block item-img">
-                  <div>
-                    <div class="mask">
-                      <div class="caption">More Detail</div>
-                    </div>
-                    <img
-                      data-aos="zoom-in"
-                      data-aos-duration="3000"
-                      class="img-fluid"
-                      src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="">
-                  </div>
-                </router-link>
-            </a>
+            </router-link>
             <div class="row mt-2">
               <div class="col-md-6 mb-2">
                 <router-link
                   :to="`/product/3AqvRNnfpnmOw1yIs9uhWAcABLUClWDEjoBHwdBxDMluscIaTnPLcurk5INpEfV9`"
-                  class="d-block item-img">
+                  class="d-block item-hover">
                   <div class="mask">
-                    <div class="caption">More Detail</div>
+                    <div class="caption">查看更多</div>
                   </div>
                   <img
                     data-aos="zoom-in"
@@ -98,24 +113,24 @@
               </div>
               <div class="col-md-6">
                 <router-link
-                  :to="`/product/cZRIWQYc4wBI6JN0gTmxsVEmWGA2dtfHaJVhqWbmDECsgLbdci3izTkwyXfhL5vr`"
-                  class="d-block item-img">
+                  :to="`/product/UPYF4f2pgsWsH8L6AHr5BmFkdVchr4V4N5RXL5wGCAKWclFrYiAadVBCAbK65qfT`"
+                  class="d-block item-hover">
                   <div class="mask">
-                    <div class="caption">More Detail</div>
+                    <div class="caption">查看更多</div>
                   </div>
                   <img
                     data-aos="zoom-in"
                     data-aos-delay="500"
                     class="img-fluid"
-                    src="https://images.unsplash.com/photo-1591209695498-d4c00abe85f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80" alt="">
+                    src="https://images.unsplash.com/photo-1591209627710-d2427565a41f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="">
                 </router-link>
-                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
       <!-- section_2 -->
-      <section class="section text-center">
+      <section id="fash" class="section text-center">
         <div class="section-title" data-aos="fade-up">
           <div class="mb-0 mb-2 py-2 text-primary" style="background-color: rgba(0,0,0,0.1)">
             <h3 class="title-eng">la Manière</h3>
@@ -124,60 +139,58 @@
         </div>
         <div class="row d-flex flex-row-reverse">
           <div class="col-md-5">
-            <div class="item-img">
+            <router-link
+              :to="`/product/DE2Y4UxbglhZDCBwkfO82p9sEivqRfXHi7fZmS9EMtknbGvhiivgzdIuWFEKNOHI`"
+              class="d-block item-hover">
+              <div class="mask">
+                <div class="caption">查看更多</div>
+              </div>
               <div class="img-r"
-                data-aos="zoom-out-left" data-aos-delay="300"></div>
-            </div>
+                data-aos="zoom-out-left"
+                data-aos-delay="300">
+              </div>
+            </router-link>
           </div>
           <div class="col-md-7">
-            <a href="" class="d-block item-img">
+            <router-link
+              :to="`/product/hLgUBUjKeqAOBNh5JcfwI0DXEz1VkezFTkUzdwqhfCYvGd2wuIsqCZ15OadUkhBg`"
+              class="d-block item-hover">
               <div class="mask">
-                <div class="caption">More Detail</div>
+                <div class="caption">查看更多</div>
               </div>
-              <router-link
-                  :to="`/product/ex7DaebwGtjt4jguEb7MJE9zRwQwLITvfQZLbCazRXkiAwUK1tKYP0xfi3LMrHAO`"
-                  class="d-block item-img">
-                  <div class="mask">
-                    <div class="caption">More Detail</div>
-                  </div>
-                  <div class="img-t" data-aos="zoom-out-right"></div>
-                </router-link>
-            </a>
+              <div class="img-t" data-aos="zoom-out-right"></div>
+            </router-link>
             <div class="row mt-2">
               <div class="col-md-6 mb-2">
                 <router-link
-                  :to="`/product/QFSkuL3IlX0cB8k7YVUq3jn2OkfPkzYun4OisJKeiIXJ2uGr6f2AtoXdVbhIz6Bk`"
-                  class="d-block item-img">
+                  :to="`/product/DE2Y4UxbglhZDCBwkfO82p9sEivqRfXHi7fZmS9EMtknbGvhiivgzdIuWFEKNOHI`"
+                  class="d-block item-hover" style="height: 240px">
                   <div class="mask">
-                    <div class="caption">More Detail</div>
+                    <div class="caption">查看更多</div>
                   </div>
-                  <img
+                  <div class="img-bl"
                     data-aos="zoom-in"
-                    data-aos-delay="300"
-                    class="img-fluid"
-                    src="https://images.unsplash.com/photo-1589422453619-3171862e49d2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="">
+                    data-aos-delay="300"></div>
                 </router-link>
               </div>
               <div class="col-md-6">
                 <router-link
-                  :to="`/product/ex7DaebwGtjt4jguEb7MJE9zRwQwLITvfQZLbCazRXkiAwUK1tKYP0xfi3LMrHAO`"
-                  class="d-block item-img">
+                  :to="`/product/O4duZeluV92bTwoSQH6S5QM2KiznTsRndk5epsjnHcloOZiAb46GWy2NVw7fDyVW`"
+                  class="d-block item-hover" style="height: 240px">
                   <div class="mask">
-                    <div class="caption">More Detail</div>
+                    <div class="caption">查看更多</div>
                   </div>
-                  <img
+                  <div class="img-br"
                     data-aos="zoom-in"
-                    data-aos-delay="500"
-                    class="img-fluid"
-                    src="https://images.unsplash.com/photo-1588444757641-848a1ea4fa61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="">
+                    data-aos-delay="500"></div>
                 </router-link>
-                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
       <!-- section_3 -->
-      <section class="section text-center">
+      <section id="class" class="section text-center">
         <div class="section-title"
           data-aos="fade-up" data-aos-delay="300">
           <div class="mb-0 mb-2 py-2 text-primary" style="background-color: rgba(0,0,0,0.1)">
@@ -186,10 +199,30 @@
           </div>
         </div>
         <div class="row">
+          <div class="col-6">
+            <router-link
+              :to="`/product/2AtxBa70Zn1dhBAJH3P7rvJ5sxRlrssZjucO3WdLAWusLEAivi3shgbTq9mhd4vk`"
+              class="d-block img-change-t1 mb-2 shadow"
+              data-aos="flip-left" data-aos-delay="700">
+              <h5 class="img-title">simple<br>
+              </h5>
+            </router-link>
+          </div>
+          <div class="col-6">
+            <router-link
+              :to="`/product/lpKF8OH0ilAcW8zrJBgLnRnJ2FXIjfDhvW3oeESSNzZzE0Azze6X9v04oWaPTXCJ`"
+              class="d-block img-change-t2 mb-2 shadow"
+              data-aos="flip-left" data-aos-delay="700">
+              <h5 class="img-title">luxurious<br>
+              </h5>
+            </router-link>
+          </div>
+        </div>
+        <div class="row">
           <div class="col-6 col-md-3">
             <router-link
               :to="`/product/DE2Y4UxbglhZDCBwkfO82p9sEivqRfXHi7fZmS9EMtknbGvhiivgzdIuWFEKNOHI`"
-              class="d-block img-change-1 mb-2"
+              class="d-block img-change-1 mb-2 shadow"
               data-aos="flip-left" data-aos-delay="700">
               <h5 class="img-title">classic<br>
               </h5>
@@ -200,7 +233,7 @@
               :to="`/product/2AtxBa70Zn1dhBAJH3P7rvJ5sxRlrssZjucO3WdLAWusLEAivi3shgbTq9mhd4vk`"
               class="d-block img-change-2 mb-2"
               data-aos="flip-left" data-aos-delay="800">
-              <h5 class="img-title">Gold<br>
+              <h5 class="img-title">Cross<br>
               </h5>
             </router-link>
           </div>
@@ -224,22 +257,40 @@
           </div>
         </div>
       </section>
-      <!-- <Carousel/> -->
+      <section id="map" class="section">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 mb-2">
+              <div class="map-text bg-main text-muted">
+                <h5 class="text-primary mb-5"
+                  style="border-bottom: 1px solid">實體店面地址</h5>
+                <h4 class="mb-3">ATT 4 FUN 信義店</h4>
+                <p>地址：110台北市信義區松壽路12號</p>
+                <p>營業時間：週一至週日 11:00–22:00</p>
+                <p>電話：+886287808111</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <iframe
+                class=""
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17194.648811765546!2d121.55506046074623!3d25.04324768995761!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb0b0c4fc8d%3A0x60f9b663d6a4deb1!2zQVRUIDQgRlVOIOS_oee-qeW6lw!5e0!3m2!1szh-TW!2stw!4v1600600913843!5m2!1szh-TW!2stw"
+                width="100%" height="450" frameborder="0"
+                style="border:0;" allowfullscreen=""
+                aria-hidden="false" tabindex="0">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   </div>
 </template>
 
 <script>
-// import Carousel from '@/components/frontend/Carousel.vue';
-
 export default {
   name: 'Home',
-  components: {
-    // Carousel,
-  },
   data() {
     return {
-
     };
   },
 };
@@ -247,15 +298,10 @@ export default {
 
 <style lang="scss">
 .title-eng {
+  font-size: 48px;
   font-family: 'Lora', serif;
   font-style: italic;
   font-weight: 500;
-}
-h2.title {
-  color: #4D4D4D;
-  font-size: 14px;
-  text-align: center;
-  text-decoration: underline;
 }
 .banner-img1 {
   background-image: url(https://images.unsplash.com/photo-1549488497-94b52bddac5d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80);
@@ -264,14 +310,15 @@ h2.title {
   background-position: center center;
 }
 .banner-img2 {
-  background-image: url(https://images.unsplash.com/photo-1450297166380-cabe503887e5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1345&q=80);
-  background-size: cover;
+  background-image: url(https://images.unsplash.com/photo-1596942499930-c980d61ddd70?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80);
+  background-size: 60%;
+  background-repeat: no-repeat;
   height: 600px;
-  background-position: center center;
+  background-position: right 40%;
+  background-color: rgb(255, 168, 156);
 }
 .banner-img3 {
   background-image: url(https://images.unsplash.com/photo-1573600073102-d703f3f030ae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=658&q=80);
-  // background-size:;
   background-size: 60%;
   background-repeat: no-repeat;
   height: 600px;
@@ -282,6 +329,10 @@ h2.title {
   background-image: url(https://images.unsplash.com/photo-1481980235850-66e47651e431?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80);
   background-size: cover;
   background-position: center center;
+  transition: ease 0.5s;
+  &:hover {
+    transform: scale(1.3);
+  }
 }
 .img-r {
   height: 657px;
@@ -290,18 +341,28 @@ h2.title {
   background-position: center center;
   transition: ease 0.5s;
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.3);
   }
 }
 .img-t {
-  height: 433px;
+  height: 400px;
   background-image: url(https://images.unsplash.com/photo-1596942506460-9123e66e5d84?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=619&q=80);
   background-size: cover;
-  background-position: center 40%;
+  background-position: center 30%;
 }
-.item-img {
-  overflow: hidden;
+.img-bl {
+  height: 240px;
+  background-image: url(https://images.unsplash.com/photo-1600534932446-73938958d25f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1353&q=80);
+  background-size: cover;
+  background-position: center center;
 }
+.img-br {
+  height: 240px;
+  background-image: url(https://images.unsplash.com/photo-1598560917807-1bae44bd2be8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80);
+  background-size: cover;
+  background-position: center center;
+}
+
 @media(max-width: 767px) {
   .img-l, .img-r {
     height: 311px;
@@ -317,24 +378,44 @@ h2.title {
     height: 312px;
   }
 }
-.img-change-1 {
+.img-change-t1 {
   height: 200px;
-  background-image: url(https://images.unsplash.com/photo-1504257234803-3fa883dcdcc1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);
+  background-image: url(https://images.unsplash.com/photo-1582399545647-2a42d33089ca?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=658&q=80);
+  background-size: cover;
+  background-position: center 60%;
+  transition: 0.3s;
+  &:hover {
+    background-image: url(https://images.unsplash.com/photo-1588444837495-c6cfeb53f32d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);
+  }
+}
+.img-change-t2 {
+  height: 200px;
+  background-image: url(https://images.unsplash.com/photo-1565612741217-6ba90b8f718b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80);
   background-size: cover;
   background-position: center center;
   transition: 0.3s;
   &:hover {
-    background-image: url(https://images.unsplash.com/photo-1595370300166-9584c8aae81d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80,https://images.unsplash.com/photo-1595370300393-f3bae94f0d3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);
+    background-image: url(https://images.unsplash.com/photo-1589419881750-1d099b069183?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);
+  }
+}
+.img-change-1 {
+  height: 200px;
+  background-image: url(https://images.unsplash.com/photo-1531079070836-755400937115?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1301&q=80);
+  background-size: cover;
+  background-position: center center;
+  transition: 0.3s;
+  &:hover {
+    background-image: url(https://images.unsplash.com/photo-1589128476912-a6c7f186d9fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);
   }
 }
 .img-change-2 {
   height: 200px;
-  background-image: url(https://images.unsplash.com/photo-1589128657849-49fd6d28d4b3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);
+  background-image: url(https://images.unsplash.com/photo-1552742275-5abbd48ab203?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);
   background-size: cover;
   background-position: center center;
   transition: 0.3s;
   &:hover {
-    background-image: url(https://images.unsplash.com/photo-1589128657906-cf6813f7eeed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);
+    background-image: url(https://images.unsplash.com/photo-1589419881731-c1a7249c35fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80);
   }
 }
 .img-change-3 {
@@ -344,17 +425,17 @@ h2.title {
   background-position: center center;
   transition: 0.3s;
   &:hover {
-    background-image: url(https://images.unsplash.com/photo-1589674536249-62d7ea50d6e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1951&q=80,https://images.unsplash.com/photo-1586104180458-e42615276cda?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80,https://images.unsplash.com/photo-1589674552723-19e476b514e4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80);
+    background-image: url(https://images.unsplash.com/photo-1586104195538-050b9f74f58e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);
   }
 }
 .img-change-4 {
   height: 200px;
-  background-image: url(https://images.unsplash.com/photo-1595370376122-c98ddd48e4cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);
+  background-image: url(https://images.unsplash.com/photo-1541234472211-1d5d99323f63?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=658&q=80);
   background-size: cover;
   background-position: center center;
   transition: 0.3s;
   &:hover {
-    background-image: url(https://images.unsplash.com/photo-1595370196602-2764525444aa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);
+    background-image: url(https://images.unsplash.com/photo-1588444968576-f8fe92ce56fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);
   }
 }
 .img-title {
@@ -369,6 +450,7 @@ h2.title {
 }
 .carousel-control-prev, .carousel-control-next {
   top: 50%;
+  transform: translateY(-50%);
   width: 30px;
   height: 65px;
   background-color: #FFF3E9;
@@ -379,5 +461,27 @@ h2.title {
 }
 .carousel-control-next span {
   transform: translateX(10px);
+}
+@media (max-width: 767px) {
+  #bn {
+    top: -70px;
+  }
+  .bn-text {
+    top: 150px;
+    left: 10%;
+    .title-eng {
+      margin-bottom: 0;
+      font-size: 36px;
+    }
+    a.btn {
+      font-size: 12px;
+      padding: 5px;
+      width: 100px !important;
+    }
+  }
+}
+.map-text {
+  height: 100%;
+  padding: 50px;
 }
 </style>

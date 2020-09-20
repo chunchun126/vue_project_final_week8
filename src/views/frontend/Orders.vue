@@ -160,11 +160,11 @@
             <div class="row">
               <div class="col-6">
                 <router-link :to="`/cart`"
-                  class="btn btn-sm btn-outline-primary rounded-0 d-block">回上一步
+                  class="btn btn-sm btn-outline-primary rounded-0 d-block btn-next">回上一步
                 </router-link>
               </div>
               <div class="col-6">
-                <button type="submit" class="btn btn-sm btn-primary rounded-0 btn-block"
+                <button type="submit" class="btn btn-sm btn-primary rounded-0 btn-block btn-next"
                   :disabled="invalid">送出訂單
                 </button>
               </div>
@@ -178,6 +178,7 @@
 
 <script>
 export default {
+  name: 'Orders',
   data() {
     return {
       form: {
@@ -192,17 +193,13 @@ export default {
       isLoading: false,
     };
   },
-  created() {
-
-  },
   methods: {
     // 新增優惠券
     addCoupon() {
       const url = `${process.env.VUE_APP_APIPATH}/api/${this.uuid}/ec/coupon/search`;
       this.$http.post(url, { code: this.coupon_code }).then((response) => {
         this.coupon = response.data.data;
-      }).catch((error) => {
-        console.log('新增優惠券 失敗', error.response);
+      }).catch(() => {
       });
     },
 
@@ -214,14 +211,12 @@ export default {
       this.$http.post(api, order)
         .then((res) => {
           this.isLoading = false;
-          console.log('建立一筆訂單 成功', res);
           this.$router.push('/check');
           const { id } = res.data.data;
           this.$bus.$emit('form', id);
         })
-        .catch((error) => {
+        .catch(() => {
           this.isLoading = false;
-          console.log('建立一筆訂單 失敗', error.response);
         });
     },
   },

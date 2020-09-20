@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-main footer">
+  <div class="footer bg-main">
     <footer class="container">
       <div class="d-flex justify-content-between">
         <ul class="nav">
@@ -50,7 +50,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: 'Footer',
+};
 </script>
 
 <style lang="scss">
