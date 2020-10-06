@@ -135,10 +135,10 @@ export default {
     goPage(item) {
       this.$router.push(`/product/${item.id}`);
     },
-    // 加到購物車
+    // 加到購物袋
     addToCart(item, quantity = 1) { // 需代入 商品 id 及 商品數量（因為 api 文件上為 required）
       // quantity=1 參數預設值給 1（因為最少會加入 1 個產品，不會加 0 個）
-      // 宣告新增某一筆購物車資料的 api
+      // 宣告新增某一筆購物袋資料的 api
       const url = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping`;
       // 還沒取得資料時的讀取效果
       this.isLoading = true;
@@ -150,11 +150,15 @@ export default {
         .then(() => {
           this.isLoading = false; // 移除 loading 效果
           this.$bus.$emit('update-total');
-          alert('成功加到購物車。');
+          this.$bus.$emit('message:push',
+            '成功加到購物袋。',
+            'success');
         })
         .catch((error) => {
           this.isLoading = false; // 移除 loading 效果
-          alert(error.response.data.errors[0]);
+          this.$bus.$emit('message:push',
+            error.response.data.errors[0],
+            'danger');
         });
     },
 

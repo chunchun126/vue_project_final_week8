@@ -1,5 +1,5 @@
 <template>
-  <div class="container pt-5">
+  <div class="container pt-5 mt-5 mt-md-0">
     <loading :active.sync="isLoading"></loading>
     <ul class="step list-unstyled d-flex text-center
         justify-content-center pb-5 text-primary">

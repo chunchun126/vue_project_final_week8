@@ -1,7 +1,7 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <div class="container mt-5">
+    <div class="container mt-4">
       <div class="row">
         <div class="col-md-7">
           <img :src="selectPic" class="img-fluid">
@@ -152,7 +152,7 @@ export default {
         });
     },
 
-    // 加到購物車
+    // 加到購物袋
     addToCart(item, quantity = 1) { // 需代入 商品 id 及 商品數量（因為 api 文件上為 required）
       // quantity=1 參數預設值給 1（因為最少會加入 1 個產品，不會加 0 個）
       const url = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping`;
@@ -164,13 +164,17 @@ export default {
       this.$http.post(url, cart)
         .then(() => {
           this.isLoading = false;
-          alert('成功加到購物車。');
+          this.$bus.$emit('message:push',
+            '成功加到購物袋。',
+            'success');
           this.getDetailed();
           this.$bus.$emit('update-total');
         })
         .catch((error) => {
           this.isLoading = false;
-          alert(error.response.data.errors[0]);
+          this.$bus.$emit('message:push',
+            error.response.data.errors[0],
+            'danger');
         });
     },
 

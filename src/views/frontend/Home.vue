@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="container" id="bn">
+    <div class="container px-0 mt-5 mt-md-0" id="bn">
       <!-- banner -->
       <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -26,7 +26,7 @@
             <div class="banner-img2"></div>
             <div class="carousel-caption bn-text text-left"
               style="top: 40%;left: 120px">
-              <p class="mb-0 h1 text-white title-eng">la Manière</p>
+              <p class="mb-0 h1 text-white title-eng">La Manière</p>
               <p class="text-primary d-md-block d-none">︱ 摩 登 系 列 ︱</p>
               <small class="text-white d-md-block d-none">Design by Bien-aimé</small>
               <a href="#fash" class="btn btn-sm rounded-0 btn-primary"
@@ -38,7 +38,7 @@
           <div class="carousel-item" data-interval="2000">
             <div class="banner-img3"></div>
             <div class="carousel-caption bn-text text-right" style="top: 50%">
-              <p class="mb-0 h1 text-primary title-eng">classical</p>
+              <p class="mb-0 h1 text-primary title-eng">Classical</p>
               <p class="text-primary d-md-block d-none">︱ 經 典 系 列 ︱</p>
               <small class="text-primary d-md-block d-none">Design by Bien-aimé</small>
               <a href="#class" class="btn btn-sm rounded-0 btn-primary"
@@ -133,7 +133,7 @@
       <section id="fash" class="section text-center">
         <div class="section-title" data-aos="fade-up">
           <div class="mb-0 mb-2 py-2 text-primary" style="background-color: rgba(0,0,0,0.1)">
-            <h3 class="title-eng">la Manière</h3>
+            <h3 class="title-eng">La Manière</h3>
             <small style="font-size: 18px">︱ 摩登系列 ︱ Bien-aimé 設計</small>
           </div>
         </div>
@@ -194,7 +194,7 @@
         <div class="section-title"
           data-aos="fade-up" data-aos-delay="300">
           <div class="mb-0 mb-2 py-2 text-primary" style="background-color: rgba(0,0,0,0.1)">
-            <h3 class="title-eng">classical</h3>
+            <h3 class="title-eng">Classical</h3>
             <small style="font-size: 18px">︱ 經典系列 ︱ Bien-aimé 推薦</small>
           </div>
         </div>
@@ -262,9 +262,9 @@
           <div class="row">
             <div class="col-md-6 mb-2">
               <div class="map-text bg-main text-muted">
-                <h5 class="text-primary mb-5"
-                  style="border-bottom: 1px solid">實體店面地址</h5>
-                <h4 class="mb-3">ATT 4 FUN 信義店</h4>
+                <h4 class="text-primary mb-5"
+                  style="border-bottom: 1px solid">實體店面地址</h4>
+                <h5 class="mb-3">ATT 4 FUN 信義店</h5>
                 <p>地址：110台北市信義區松壽路12號</p>
                 <p>營業時間：週一至週日 11:00–22:00</p>
                 <p>電話：+886287808111</p>
@@ -272,7 +272,7 @@
             </div>
             <div class="col-md-6">
               <iframe
-                class=""
+                class="map"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17194.648811765546!2d121.55506046074623!3d25.04324768995761!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb0b0c4fc8d%3A0x60f9b663d6a4deb1!2zQVRUIDQgRlVOIOS_oee-qeW6lw!5e0!3m2!1szh-TW!2stw!4v1600600913843!5m2!1szh-TW!2stw"
                 width="100%" height="450" frameborder="0"
                 style="border:0;" allowfullscreen=""

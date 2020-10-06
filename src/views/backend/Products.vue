@@ -458,10 +458,10 @@ export default {
           this.tempProduct.imageUrl.push(response.data.data.path);
         }
       }).catch(() => {
-        // this.$bus.$emit('message:push',
-        //   `檔案上傳失敗惹，好糗Σ( ° △ °|||)︴
-        //   請檢查是不是檔案大小超過 2MB`,
-        //   'danger');
+        this.$bus.$emit('message:push',
+          `檔案上傳失敗惹，好糗Σ( ° △ °|||)︴
+          請檢查是不是檔案大小超過 2MB`,
+          'danger');
         this.status.fileUploading = false;
       });
     },

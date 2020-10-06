@@ -71,10 +71,14 @@ export default {
           this.$router.push('/admin/products');
         })
         // 失敗
-        .catch(() => {
+        .catch((error) => {
           this.isLoading = false;
           // 轉址到 login 頁
           this.$router.push('/login');
+          this.$bus.$emit('message:push',
+            `登入失敗惹，好糗Σ( ° △ °|||)︴
+            ${error}`,
+            'danger');
         });
     },
   },

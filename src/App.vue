@@ -1,14 +1,19 @@
 <template>
   <div id="app">
+    <Toast />
     <loading :active.sync="isLoading"></loading>
     <router-view/>
   </div>
 </template>
 
 <script>
+import Toast from '@/components/Toasts.vue';
 
 export default {
   name: 'App',
+  components: {
+    Toast,
+  },
   data() {
     return {
       isLoading: false,

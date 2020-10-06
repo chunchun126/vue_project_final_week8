@@ -2,13 +2,14 @@
 @import "./helpers/_variables"; /*我們的自定義內容*/
 @import "~bootstrap/scss/bootstrap"; /*bootstrap 主套件*/
 
+
 body {
   // background-color: #f7f7f7;
   font-family: 'Amiko', 'Noto Serif TC', serif, 'EB Garamond', serif,
     'Microsoft JhengHei', Avenir, Helvetica, Arial, sans-serif;
 }
 * {
-  // border: solid 1px;
+  // outline: solid 1px black;
   position: relative;
   line-height: 1.8;
 }
@@ -234,7 +235,7 @@ $color_main: #FFF3E9;
 // }
 .footer-text {
   color: rgba(black, 0.5);
-  font-size: 14px;
+  font-size: 15px;
   line-height: initial;
   &:hover {
     color: rgba(black, 0.7);

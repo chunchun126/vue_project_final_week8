@@ -1,7 +1,7 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <div class="container pt-5">
+    <div class="container pt-md-5 mt-5">
       <ul class="step list-unstyled d-flex text-center
         justify-content-center pb-5 text-primary">
         <li>
@@ -29,7 +29,7 @@
           <div class="text-left">
             <button type="button" class="btn btn-sm btn-secondary
               rounded-0 border-bottom-0"
-              style="font-size: 8px"
+              style="font-size: 15px"
               @click="deleteAllCart">全部刪除
             </button>
           </div>
@@ -59,7 +59,7 @@
                 <div class="text-white">
                   <small class="text-white badge rounded-0 ml-1 mb-2 bg-primary border-0"
                     style="font-size: 10px">
-                    優惠商品。
+                    優惠商品
                   </small>
                 </div>
                 <div class="addNumber">
@@ -176,25 +176,25 @@ export default {
     this.getCart();
   },
   methods: {
-    // 加到購物車（post）
-    addToCart(id, quantity = 1) { // 需代入 商品 id 及 商品數量（因為 api 文件上為 required）
-      // quantity=1 參數預設值給 1（因為最少會加入 1 個產品，不會加 0 個）
-      const url = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping`;
-      this.isLoading = true;
-      const cart = {
-        product: id, // id 透過參數的方式代入
-        quantity, // quantity: quantity 的簡寫，數量也是透過參數的方式代入
-      };
-      this.$http.post(url, cart) // （網址, 要傳送的物件）
-        .then(() => {
-          this.isLoading = false;
-        })
-        .catch(() => {
-          this.isLoading = false;
-        });
-    },
+    // 加到購物袋（post）
+    // addToCart(id, quantity = 1) { // 需代入 商品 id 及 商品數量（因為 api 文件上為 required）
+    //   // quantity=1 參數預設值給 1（因為最少會加入 1 個產品，不會加 0 個）
+    //   const url = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping`;
+    //   this.isLoading = true;
+    //   const cart = {
+    //     product: id, // id 透過參數的方式代入
+    //     quantity, // quantity: quantity 的簡寫，數量也是透過參數的方式代入
+    //   };
+    //   this.$http.post(url, cart) // （網址, 要傳送的物件）
+    //     .then(() => {
+    //       this.isLoading = false;
+    //     })
+    //     .catch(() => {
+    //       this.isLoading = false;
+    //     });
+    // },
 
-    // 取出購物車的內容（get）
+    // 取出購物袋的內容（get）
     getCart() {
       const url = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping`;
       this.isLoading = true;
@@ -216,13 +216,13 @@ export default {
 
     // 總金額加總 拉出來寫成一個方法，這樣不論是增加或刪減才不會出錯
     updateTotal() {
-      // 購物車金額加總
+      // 購物袋金額加總
       this.carts.forEach((item) => {
         this.cartTotal += item.product.price * item.quantity;
       });
     },
 
-    // 更新購物車商品的數量
+    // 更新購物袋商品的數量
     updateQuantity(id, quantity) {
       const url = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping`;
       this.isLoading = true;
@@ -233,7 +233,7 @@ export default {
       this.$http.patch(url, cart)
         .then(() => {
           this.isLoading = false;
-          // 跑完之後要重新取得購物車資料
+          // 跑完之後要重新取得購物袋資料
           this.getCart();
         })
         .catch(() => {
@@ -241,7 +241,7 @@ export default {
         });
     },
 
-    // 清空購物車
+    // 清空購物袋
     deleteAllCart() {
       this.isLoading = true;
       const url = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping/all/product`;
@@ -250,13 +250,19 @@ export default {
           this.isLoading = false;
           this.$bus.$emit('update-total');
           this.getCart();
+          this.$bus.$emit('message:push',
+            '購物袋已全部刪除。',
+            'success');
         })
         .catch(() => {
           this.isLoading = false;
+          this.$bus.$emit('message:push',
+            '刪除失敗',
+            'danger');
         });
     },
 
-    // 刪除單一筆購物車品項
+    // 刪除單一筆購物袋品項
     deleteOneCart(item) {
       this.isLoading = true;
       const url = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping/${item.product.id}`;
@@ -265,9 +271,15 @@ export default {
           this.isLoading = false;
           this.$bus.$emit('update-total');
           this.getCart();
+          this.$bus.$emit('message:push',
+            '購物袋已成功刪除這項商品。',
+            'success');
         })
         .catch(() => {
           this.isLoading = false;
+          this.$bus.$emit('message:push',
+            '刪除失敗',
+            'danger');
         });
     },
 
@@ -279,10 +291,15 @@ export default {
         .then((res) => {
           this.isLoading = false;
           this.coupon = res.data.data;
+          this.$bus.$emit('message:push',
+            '加入優惠碼成功。',
+            'success');
         })
         .catch(() => {
           this.isLoading = false;
-          alert('此優惠碼無效');
+          this.$bus.$emit('message:push',
+            '此優惠碼無效。',
+            'danger');
         });
     },
   },

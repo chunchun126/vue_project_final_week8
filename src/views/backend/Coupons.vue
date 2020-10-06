@@ -65,8 +65,121 @@
       <!-- pagination 元件 -->
       <pagination :pages="pagination" @emit-pages="getCoupons"/>
       <!-- coupon Modal 元件 -->
-      <coupon-modal ref="CouponModal" :temp-coupon="tempCoupon"
-        @emit-update-coupon="updateCoupons"/>
+      <div
+        id="couponModal"
+        class="modal fade"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div
+          class="modal-dialog"
+          role="document"
+        >
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5
+                id="exampleModalLabel"
+                class="modal-title"
+              >
+                建立優惠券
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="title">標題</label>
+                <input
+                  id="title"
+                  v-model="tempCoupon.title"
+                  type="text"
+                  class="form-control"
+                  placeholder="請輸入標題"
+                >
+              </div>
+              <div class="form-group">
+                <label for="coupon_code">優惠碼</label>
+                <input
+                  id="coupon_code"
+                  v-model="tempCoupon.code"
+                  type="text"
+                  class="form-control"
+                  placeholder="請輸入優惠碼"
+                >
+              </div>
+              <div class="form-group">
+                <label for="due_date">到期日</label>
+                <input
+                  id="due_date"
+                  v-model="tempCoupon.due_date"
+                  type="date"
+                  class="form-control"
+                >
+              </div>
+              <div class="form-group">
+                <label for="due_time">到期時間</label>
+                <input
+                  id="due_time"
+                  v-model="tempCoupon.due_time"
+                  type="time"
+                  step="1"
+                  class="form-control"
+                >
+              </div>
+              <div class="form-group">
+                <label for="price">折扣百分比</label>
+                <input
+                  id="price"
+                  v-model="tempCoupon.percent"
+                  type="number"
+                  class="form-control"
+                  placeholder="請輸入折扣數量"
+                >
+              </div>
+              <div class="form-group">
+                <div class="form-check">
+                  <input
+                    id="enabled"
+                    v-model="tempCoupon.enabled"
+                    class="form-check-input"
+                    type="checkbox"
+                    :value="tempCoupon.enabled"
+                  >
+                  <label
+                    class="form-check-label"
+                    for="enabled"
+                  >是否啟用</label>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-outline-secondary"
+                data-dismiss="modal"
+              >
+                關閉
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                @click="updateCoupons"
+              >
+                {{ status === 'new' ? '新增優惠卷' : '更新優惠券' }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- dele coupon Modal 元件 觸發外元件方法 deleCoupon -->
       <dele-coupon-modal ref="DeleCouponModal" :temp-coupon="tempCoupon"
         @dele-coupon="deleCoupon"/>
@@ -76,21 +189,18 @@
 
 <script>
 /* global $ */
-import CouponModal from '@/components/backend/CouponModal.vue';
 import DeleCouponModal from '@/components/backend/DeleCouponModal.vue';
 import Pagination from '@/components/Pagination.vue';
 
 export default {
   name: 'Coupons',
   components: {
-    CouponModal,
     DeleCouponModal,
     Pagination,
   },
   data() {
     return {
       isLoading: false,
-      isNew: false,
       coupons: {},
       newDeadline: '',
       pagination: {},
@@ -99,10 +209,11 @@ export default {
         code: '',
         percent: 80,
         enabled: false,
-        deadline_at: '',
+        deadline_at: 0,
       },
       due_date: '',
       due_time: '',
+      status: '',
     };
   },
   created() {
@@ -124,11 +235,12 @@ export default {
         });
     },
     // 開啟 Modal [ok]
-    openCouponModal(isNew, item) {
-      switch (isNew) {
+    openCouponModal(status, item) {
+      this.status = status;
+
+      switch (status) {
         case 'new': // 新增（不須物件拷貝）
           this.tempCoupon = {}; // 給新的參考路徑
-          this.isNew = true;
           $('#couponModal').modal('show');
           break;
         // 由於 const 與 let 宣告環境較特別，故需要在 case 外層宣告一個 {} 確保作用域
@@ -152,10 +264,13 @@ export default {
     updateCoupons() {
       this.isLoading = true;
       let api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/coupon`;
-      let httpMethod = 'post';
-      // 判斷如果不是新增 就切換成 更新 api
-      if (!this.isNew) {
+      let httpMethod = '';
+      let status = '新增成功囉，好棒ヽ(＾Д＾)ﾉ ';
+      if (this.status === 'new') {
+        httpMethod = 'post';
+      } else {
         api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/coupon/${this.tempCoupon.id}`;
+        status = '更新成功囉，好棒ヽ(＾Д＾)ﾉ ';
         httpMethod = 'patch';
       }
       // 針對日期做組合重新寫入到物件中
@@ -168,10 +283,16 @@ export default {
           $('#couponModal').modal('hide');
           // 更新畫面
           this.getCoupons();
+          this.$bus.$emit('message:push',
+            status,
+            'success');
         })
         .catch(() => {
           this.isLoading = false;
           $('#couponModal').modal('hide');
+          this.$bus.$emit('message:push',
+            '出現錯誤惹，好糗Σ( ° △ °|||)︴',
+            'danger');
         });
     },
     // 切換是否啟用
@@ -196,6 +317,9 @@ export default {
           $('#deleCouponModal').modal('hide');
           // 刪除完 要再跑一次 getCoupons 更新畫面
           this.getCoupons();
+          this.$bus.$emit('message:push',
+            '刪除成功囉，好棒ヽ(＾Д＾)ﾉ',
+            'success');
         })
         .catch(() => {
           this.isLoading = false;

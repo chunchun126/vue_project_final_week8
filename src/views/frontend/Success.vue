@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container pt-5">
+    <div class="container pt-md-5">
       <ul class="step list-unstyled d-flex text-center
         justify-content-center pb-5 text-primary">
         <li>
@@ -65,5 +65,10 @@ export default {
   transform: translateX(-50%);
   z-index: 0;
   max-width: 800px;
+}
+@media (max-width: 767px) {
+  .push {
+    height: 0;
+  }
 }
 </style>
