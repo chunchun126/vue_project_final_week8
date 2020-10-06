@@ -2,7 +2,8 @@
   <div class="sticky-top">
     <div class="nav-bg">
       <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light py-0">
+        <nav id="navbar"
+          class="navbar navbar-expand-lg navbar-light py-0">
           <!-- logo -->
           <div class="logo">
             <router-link :to="{ name: '首頁' }"
@@ -17,14 +18,14 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-              <li class="nav-item">
+              <li class="nav-item" @click="toggler">
                 <router-link
                   :to="{ name: '所有產品' }"
                   class="nav-bottom-hover nav-link px-md-3">所有產品
                 </router-link>
                 <hr class="nav-line">
               </li>
-              <li class="nav-item">
+              <li class="nav-item" @click="toggler">
                 <router-link :to="{ name: '品牌介紹' }"
                 class="nav-bottom-hover nav-link px-md-3">品牌介紹</router-link>
                 <hr class="nav-line">
@@ -32,7 +33,8 @@
             </ul>
             <!-- 右上方小 icon -->
             <ul class="nav form-inline my-2 my-lg-0">
-              <li class="nav-item">
+              <li class="nav-item"
+                @click="toggler">
                 <router-link :to="{ name: '首頁' }" class="nav-link pl-0 pl-md-2">
                   <i class="fas fa-home"></i>
                 </router-link>
@@ -42,7 +44,7 @@
                   <i class="fas fa-user"></i>
                 </router-link>
               </li>
-              <li class="nav-item">
+              <li class="nav-item" @click="toggler">
                 <router-link :to="`/cart`" class="nav-link">
                   <i class="fas fa-shopping-bag"></i>
                   <span class="badge badge-danger text-white badge-pill border-0 position-absolute"
@@ -93,6 +95,9 @@ export default {
         .then((res) => {
           this.cartTotal = res.data.data.length;
         });
+    },
+    toggler() {
+      $('.navbar-toggler').trigger('click');
     },
   },
 };

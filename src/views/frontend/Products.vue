@@ -31,14 +31,14 @@
             </div>
           </div>
         </div>
-        <!-- <div id="options" class="col d-lg-none sticky-top" style="top: 55px">
+        <div id="options" class="col d-lg-none sticky-top" style="top: 55px">
           <select class="form-control mb-3"
             @change="categoryData($event.target.value)" v-if="category.list">
             <option :value="item" v-for="(item, index) in category.list"
               :key="index">{{ item }}
             </option>
           </select>
-        </div> -->
+        </div>
         <!-- 商品列表 -->
         <div class="col-md-10">
           <div class="tab-content">
