@@ -40,12 +40,12 @@
                 </router-link>
               </li>
               <li class="nav-item">
-                <router-link :to="`/login`" class="nav-link">
+                <router-link to="/login" class="nav-link">
                   <i class="fas fa-user"></i>
                 </router-link>
               </li>
               <li class="nav-item" @click="toggler">
-                <router-link :to="`/cart`" class="nav-link">
+                <router-link to="/cart" class="nav-link">
                   <i class="fas fa-shopping-bag"></i>
                   <span class="badge badge-danger text-white badge-pill border-0 position-absolute"
                     style="transform: translateX(-10px) translateY(13px);font-size: 8px"
@@ -88,12 +88,22 @@ export default {
       this.getCart();
     });
   },
+  beforeDestroy() {
+    // 清除監聽事件
+    // 如果要指定哪個監聽對應方法，就需要傳入第二個參數(對應$on的設定)
+    this.$bus.$off('update-total');
+  },
   methods: {
     getCart() {
       const url = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping`;
       this.$http.get(url)
         .then((res) => {
           this.cartTotal = res.data.data.length;
+        })
+        .catch((error) => {
+          this.$bus.$emit('message:push',
+            error.response.data.errors[0],
+            'danger');
         });
     },
     toggler() {
@@ -115,9 +125,7 @@ export default {
     font-size: 26px;
   }
 }
-.nav-top, .logo img {
-  transition: 0.5s;
-}
+
 .nav-item:hover {
   .nav-line {
     width: 100%;

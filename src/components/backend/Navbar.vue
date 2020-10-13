@@ -23,7 +23,7 @@
             :to="{ name: '圖片儲存' }">圖片儲存列表</router-link>
           <router-link
             class="nav-item nav-link"
-            :to="`/`">回前台</router-link>
+            to="/">回前台</router-link>
         </div>
       </div>
     </nav>

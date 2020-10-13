@@ -62,23 +62,22 @@ export default {
           this.$bus.$emit('message:push',
             '登入成功',
             'success');
-          this.isLoading = false;
           const { expired } = res.data;
           const { token } = res.data;
           // 寫入 cookie token // expires 設置有效時間
           document.cookie = `myToken=${token};expires=${new Date(expired * 1000)};`;
-          // 轉址到後台
           this.$router.push('/admin/products');
+          this.isLoading = false;
         })
         // 失敗
         .catch((error) => {
-          this.isLoading = false;
           // 轉址到 login 頁
           this.$router.push('/login');
           this.$bus.$emit('message:push',
             `登入失敗惹，好糗Σ( ° △ °|||)︴
             ${error}`,
             'danger');
+          this.isLoading = false;
         });
     },
   },

@@ -63,8 +63,8 @@
         </tbody>
       </table>
       <!-- pagination 元件 -->
-      <pagination :pages="pagination" @emit-pages="getCoupons"/>
-      <!-- coupon Modal 元件 -->
+      <Pagination :pages="pagination" @emit-pages="getCoupons"/>
+      <!-- coupon Modal -->
       <div
         id="couponModal"
         class="modal fade"
@@ -119,7 +119,7 @@
                 <label for="due_date">到期日</label>
                 <input
                   id="due_date"
-                  v-model="tempCoupon.due_date"
+                  v-model="due_date"
                   type="date"
                   class="form-control"
                 >
@@ -128,7 +128,7 @@
                 <label for="due_time">到期時間</label>
                 <input
                   id="due_time"
-                  v-model="tempCoupon.due_time"
+                  v-model="due_time"
                   type="time"
                   step="1"
                   class="form-control"
@@ -179,9 +179,8 @@
           </div>
         </div>
       </div>
-
       <!-- dele coupon Modal 元件 觸發外元件方法 deleCoupon -->
-      <dele-coupon-modal ref="DeleCouponModal" :temp-coupon="tempCoupon"
+      <DeleCouponModal ref="DeleCouponModal" :temp-coupon="tempCoupon"
         @dele-coupon="deleCoupon"/>
     </div>
   </div>
@@ -226,9 +225,9 @@ export default {
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/coupons?page=${nowPage}`;
       this.$http.get(api)
         .then((res) => {
-          this.isLoading = false;
           this.coupons = res.data.data;
           this.pagination = res.data.meta.pagination;
+          this.isLoading = false;
         })
         .catch(() => {
           this.isLoading = false;
@@ -279,20 +278,20 @@ export default {
 
       this.$http[httpMethod](api, this.tempCoupon)
         .then(() => {
-          this.isLoading = false;
           $('#couponModal').modal('hide');
           // 更新畫面
           this.getCoupons();
           this.$bus.$emit('message:push',
             status,
             'success');
+          this.isLoading = false;
         })
         .catch(() => {
-          this.isLoading = false;
           $('#couponModal').modal('hide');
           this.$bus.$emit('message:push',
             '出現錯誤惹，好糗Σ( ° △ °|||)︴',
             'danger');
+          this.isLoading = false;
         });
     },
     // 切換是否啟用
@@ -313,17 +312,17 @@ export default {
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/coupon/${this.tempCoupon.id}`;
       this.$http.delete(api)
         .then(() => {
-          this.isLoading = false;
           $('#deleCouponModal').modal('hide');
           // 刪除完 要再跑一次 getCoupons 更新畫面
           this.getCoupons();
           this.$bus.$emit('message:push',
             '刪除成功囉，好棒ヽ(＾Д＾)ﾉ',
             'success');
+          this.isLoading = false;
         })
         .catch(() => {
-          this.isLoading = false;
           $('#deleCouponModal').modal('hide');
+          this.isLoading = false;
         });
     },
   },

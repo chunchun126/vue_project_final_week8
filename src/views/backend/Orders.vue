@@ -50,7 +50,7 @@
         </tbody>
       </table>
       <!-- pagination 元件 -->
-      <pagination :pages="pagination" @emit-pages="getOrders"/>
+      <Pagination :pages="pagination" @emit-pages="getOrders"/>
     </div>
   </div>
 </template>
@@ -82,9 +82,9 @@ export default {
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/orders?page=${nowPage}`;
       this.$http.get(api)
         .then((res) => {
-          this.isLoading = false;
           this.orders = res.data.data;
           this.pagination = res.data.meta.pagination;
+          this.isLoading = false;
         })
         .catch(() => {
           this.isLoading = false;
@@ -92,6 +92,7 @@ export default {
     },
     // 設定訂單為 已付款/尚未付款
     setOrderPaid(item) { // 將回傳的訂單資料代入參數
+      this.isLoading = true;
       let api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/orders/${item.id}/paid`;
       // 如果尚未付款 則切換 api
       if (!item.paid) {
@@ -101,6 +102,10 @@ export default {
         .then(() => {
           // 修改完後必須 重新 取得所有訂單
           this.getOrders();
+          this.isLoading = false;
+        })
+        .catch(() => {
+          this.isLoading = false;
         });
     },
   },

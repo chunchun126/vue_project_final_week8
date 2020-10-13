@@ -32,7 +32,7 @@
           <tr v-for="(item,key) in products" :key="item.id">
             <th scope="row">{{ key+1 }}</th>
             <td>
-              <img :src="item.imageUrl" class="smallImg" alt />
+              <img :src="item.imageUrl" class="smallImg" alt="產品縮圖" />
             </td>
             <td>{{ item.category }}</td>
             <td>{{ item.title }}</td>
@@ -79,7 +79,7 @@
         </tbody>
       </table>
       <!-- pagination 元件 -->
-      <pagination :pages="pagination" @emit-pages="getProducts"/>
+      <Pagination :pages="pagination" @emit-pages="getProducts"/>
       <!-- add Modal -->
       <div
         class="modal fade bd-example-modal-xl"
@@ -118,7 +118,6 @@
                         placeholder="請輸入圖片網址"
                       />
                     </div>
-
                     <div class="form-group">
                       <label for="customFile">
                         或 上傳圖片
@@ -135,8 +134,8 @@
                         @change="uploadFile"
                       >
                     </div>
-                    <img :src="tempProduct.imageUrl[0]" class="img-fluid mt-3" />
-
+                    <img :src="tempProduct.imageUrl[0]" class="img-fluid mt-3"
+                      alt="產品縮圖" />
                   </div>
                   <div class="col-md-8">
                     <form>
@@ -337,9 +336,9 @@ export default {
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/products?page=${nowPage}`;
       this.$http.get(api)
         .then((res) => {
-          this.isLoading = false;
           this.products = res.data.data;
           this.pagination = res.data.meta.pagination;
+          this.isLoading = false;
         })
         .catch(() => {
           this.isLoading = false;
@@ -347,11 +346,16 @@ export default {
     },
     // 取「單一」產品資料 並呈現在 Modal 內 [ok]
     getDetail(id) {
+      this.isLoading = true;
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/product/${id}`;
       this.$http.get(api)
         .then((res) => {
           this.tempProduct = res.data.data;
           $('#addModal').modal('show');
+          this.isLoading = false;
+        })
+        .catch(() => {
+          this.isLoading = false;
         });
     },
     // 開啟 Modal [ok]
@@ -398,17 +402,17 @@ export default {
 
       this.$http[httpMethod](api, this.tempProduct)
         .then(() => {
-          this.isLoading = false;
           $('#addModal').modal('hide');
           this.$bus.$emit('message:push',
             '新增成功囉，好棒ヽ(＾Д＾)ﾉ ',
             'success');
           // 重新執行 取所有產品
           this.getProducts();
+          this.isLoading = false;
         })
         .catch(() => {
-          this.isLoading = false;
           $('#addModal').modal('hide');
+          this.isLoading = false;
         });
     },
     // 切換是否啟用
@@ -429,16 +433,16 @@ export default {
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/ec/product/${id}`;
       this.$http.delete(api)
         .then(() => {
-          this.isLoading = false;
-          // 關閉 Modal
           $('#deleModal').modal('hide');
           // 成功刪除後再重新觸發一次 getProducts
           this.getProducts();
           this.$bus.$emit('message:push',
             '刪除成功囉，好棒ヽ(＾Д＾)ﾉ',
             'success');
+          this.isLoading = false;
         })
         .catch(() => {
+          this.isLoading = false;
         });
     },
     // 上傳圖片檔案
@@ -470,6 +474,12 @@ export default {
 </script>
 
 <style lang="css">
+@import '~vue2-editor/dist/vue2-editor.css';
+/* Import the Quill styles you want */
+@import '~quill/dist/quill.core.css';
+@import '~quill/dist/quill.bubble.css';
+@import '~quill/dist/quill.snow.css';
+
 .formCheck {
   width: 22px;
   height: 22px;
@@ -478,10 +488,4 @@ export default {
   max-width: 70px;
   height: auto;
 }
-@import '~vue2-editor/dist/vue2-editor.css';
-
-/* Import the Quill styles you want */
-@import '~quill/dist/quill.core.css';
-@import '~quill/dist/quill.bubble.css';
-@import '~quill/dist/quill.snow.css';
 </style>

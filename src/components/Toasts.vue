@@ -51,6 +51,11 @@ export default {
       vm.updateMessage(message, status);
     });
   },
+  beforeDestroy() {
+    // 清除監聽事件
+    // 如果要指定哪個監聽對應方法，就需要傳入第二個參數(對應$on的設定)
+    this.$bus.$off('update-total');
+  },
   methods: {
     updateMessage(message, status) {
       const timestamp = Math.floor(new Date() / 1000);

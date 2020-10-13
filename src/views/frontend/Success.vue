@@ -28,12 +28,13 @@
       <div class="row">
         <div class="col">
           <img class="successImg"
-            src="https://images.unsplash.com/photo-1579726670107-e543fc48ddbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="">
+            src="https://images.unsplash.com/photo-1579726670107-e543fc48ddbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+            alt="交易成功">
           <div class="success text-center">
             <i class="far fa-check-circle"></i>
             <p class="h2 mt-3">交易成功</p>
             <p class="mb-2">感謝您的訂購，<br>歡迎再度光臨選購。</p>
-            <router-link :to="`/`"
+            <router-link to="/"
               class="btn btn-sm btn-primary rounded-0">繼續購物
             </router-link>
           </div>

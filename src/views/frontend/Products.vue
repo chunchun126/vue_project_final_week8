@@ -61,7 +61,7 @@
                       <div class="card-body p-2">
                         <h6 class="font-weight-light product-title mb-0">{{ item.title }}
                           <small class="badge rounded-0 ml-1 mb-2 bg-main border-0"
-                            style="font-size: 10px">
+                            style="font-size: 14px">
                             {{ item.category }}
                           </small>
                         </h6>
@@ -83,7 +83,6 @@
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -119,18 +118,17 @@ export default {
       this.isLoading = true;
       this.$http.get(`${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/products?paged=40`)
         .then((res) => {
-          this.isLoading = false;
           vm.hexAPI.data = res.data.data;
           vm.pagination = res.data.meta.pagination;
           vm.category.data = vm.hexAPI.data;
           vm.hexAPI.data.map((item) => vm.category.list.push(item.category));
           vm.category.list = [...(new Set(vm.category.list))];
+          this.isLoading = false;
         })
         .catch(() => {
           this.isLoading = false;
         });
     },
-
     // 到單一產品細節頁面
     goPage(item) {
       this.$router.push(`/product/${item.id}`);
@@ -146,22 +144,21 @@ export default {
         product: item, // id 透過參數的方式代入
         quantity, // quantity: quantity 的簡寫，數量也是透過參數的方式代入
       };
-      this.$http.post(url, cart) // （網址, 要傳送的物件）
+      this.$http.post(url, cart)
         .then(() => {
-          this.isLoading = false; // 移除 loading 效果
           this.$bus.$emit('update-total');
           this.$bus.$emit('message:push',
             '成功加到購物袋。',
             'success');
+          this.isLoading = false;
         })
         .catch((error) => {
-          this.isLoading = false; // 移除 loading 效果
           this.$bus.$emit('message:push',
             error.response.data.errors[0],
             'danger');
+          this.isLoading = false;
         });
     },
-
     categoryData(categoryName, index = 0) {
       const vm = this;
       vm.categoryIndex = index;
@@ -169,12 +166,7 @@ export default {
       if (categoryName === '全部產品') {
         vm.category.data = vm.hexAPI.data;
       } else {
-        // eslint-disable-next-line array-callback-return
-        vm.hexAPI.data.map((item) => {
-          if (item.category === categoryName) {
-            vm.category.data.push(item);
-          }
-        });
+        vm.category.data = vm.hexAPI.data.filter((item) => item.category === categoryName);
       }
     },
   },

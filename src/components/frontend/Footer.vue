@@ -4,19 +4,19 @@
       <div class="d-flex justify-content-between">
         <ul class="nav">
           <li class="nav-item">
-            <router-link :to="`/`"
+            <router-link to="/"
               class="nav-link footer-text pt-3">
               回到首頁
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link :to="`/products`"
+            <router-link to="/products"
               class="nav-link footer-text pt-3">
               所有產品
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link :to="`/about`"
+            <router-link to="/about"
               class="nav-link footer-text pt-3">
               關於我們
             </router-link>

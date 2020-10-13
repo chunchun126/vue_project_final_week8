@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loading :active.sync="isLoading"></loading>
     <div class="container pt-5  mt-5 mt-md-0">
       <ul class="step list-unstyled d-flex text-center
         justify-content-center pb-5 text-primary">
@@ -33,6 +34,7 @@
                 <div class="row p-3 bg-white">
                   <div class="col-md-6">
                     <img class="img-fluid"
+                      alt="購買商品圖片"
                       :src="item.product.imageUrl[0]">
                   </div>
                   <div class="col-md-6">
@@ -95,12 +97,12 @@
           </div>
           <div class="row mt-3">
               <div class="col-6">
-                <router-link :to="`/orders`"
+                <router-link to="/orders"
                   class="btn btn-sm btn-outline-primary rounded-0 d-block btn-next">回上一步
                 </router-link>
               </div>
               <div class="col-6">
-                <router-link :to="`/success`"
+                <router-link to="/success"
                   class="btn btn-sm btn-primary rounded-0 d-block btn-next">確定付款
                 </router-link>
               </div>
@@ -116,6 +118,7 @@ export default {
   name: 'Check',
   data() {
     return {
+      isLoading: false,
       orders: [],
       order: {
         products: [],
@@ -129,6 +132,7 @@ export default {
   methods: {
     // 取全部訂單
     getOrders() {
+      this.isLoading = true;
       const url = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/orders`;
       this.$http.get(url).then((res) => {
         this.orders = res.data.data;
@@ -137,14 +141,21 @@ export default {
         };
         this.getOrder(this.order.id);
         this.$bus.$emit('update-total');
+        this.isLoading = false;
+      }).catch(() => {
+        this.isLoading = false;
       });
     },
 
     // 取單一訂單
     getOrder(id) {
+      this.isLoading = true;
       const url = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/orders/${id}`;
       this.$http.get(url).then((res) => {
         this.user = res.data.data.user;
+        this.isLoading = false;
+      }).catch(() => {
+        this.isLoading = false;
       });
     },
   },

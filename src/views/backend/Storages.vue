@@ -18,7 +18,8 @@
             <td>
               <img :src="item.path"
                 class="img-fluid"
-                width="100px">
+                width="100px"
+                alt="產品縮圖" >
             </td>
             <td>
               <div class="btn-group">
@@ -36,8 +37,8 @@
           </tr>
         </tbody>
       </table>
-    <!-- pagination 元件 -->
-    <pagination :pages="pagination" @emit-pages="getData"/>
+      <!-- pagination 元件 -->
+      <Pagination :pages="pagination" @emit-pages="getData"/>
     </div>
     <!-- Modal -->
     <div
@@ -120,9 +121,9 @@ export default {
       this.isLoading = true;
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/storage?page=${nowPage}`;
       this.$http.get(api).then((res) => {
-        this.isLoading = false;
         this.storages = res.data.data;
         this.pagination = res.data.meta.pagination;
+        this.isLoading = false;
       }).catch(() => {
         this.isLoading = false;
       });
@@ -137,15 +138,13 @@ export default {
       this.isLoading = true;
       const api = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/admin/storage${this.tempData.id}`;
       this.$http.delete(api).then(() => {
-        this.isLoading = false;
-        // 關閉 Modal
         $('#deleteModal').modal('hide');
         // 刪除完要再重新跑 getData 更新畫面
         this.getData();
-      }).catch(() => {
         this.isLoading = false;
-        // 關閉 Modal
+      }).catch(() => {
         $('#deleteModal').modal('hide');
+        this.isLoading = false;
       });
     },
   },

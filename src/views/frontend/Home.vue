@@ -15,10 +15,7 @@
                 <p class="mb-0 h1 text-primary title-eng">L'amour</p>
                 <p class="text-primary mb-2 d-md-block d-none">︱ 婚 戒 系 列 ︱</p>
                 <small class="text-primary d-md-block d-none">Design by Bien-aimé</small>
-
-                <a href="#wed" class="btn btn-sm rounded-0 btn-primary"
-                  style="width: 130px">
-                  查看更多
+                <a href="#wed" class="rounded-0 bg-primary text-white morebtn">查看更多
                 </a>
               </div>
             </div>
@@ -70,10 +67,10 @@
         <div class="row">
           <div class="col-md-5">
             <router-link
-              :to="`/product/3AqvRNnfpnmOw1yIs9uhWAcABLUClWDEjoBHwdBxDMluscIaTnPLcurk5INpEfV9`"
+              to="/product/3AqvRNnfpnmOw1yIs9uhWAcABLUClWDEjoBHwdBxDMluscIaTnPLcurk5INpEfV9"
               class="d-block item-hover">
               <div class="mask">
-                <div class="caption">查看更多</div>
+                <div class="caption">查看更多1</div>
               </div>
               <div class="img-l"
                 data-aos="zoom-in"
@@ -83,7 +80,7 @@
           </div>
           <div class="col-md-7">
             <router-link
-              :to="`/product/3AqvRNnfpnmOw1yIs9uhWAcABLUClWDEjoBHwdBxDMluscIaTnPLcurk5INpEfV9`"
+              to="/product/3AqvRNnfpnmOw1yIs9uhWAcABLUClWDEjoBHwdBxDMluscIaTnPLcurk5INpEfV9"
               class="d-block item-hover">
               <div>
                 <div class="mask">
@@ -93,13 +90,14 @@
                   data-aos="zoom-in"
                   data-aos-duration="3000"
                   class="img-fluid"
-                  src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="">
+                  src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                  alt="Bien-aimé 研選婚戒系列">
               </div>
             </router-link>
             <div class="row mt-2">
               <div class="col-md-6 mb-2">
                 <router-link
-                  :to="`/product/3AqvRNnfpnmOw1yIs9uhWAcABLUClWDEjoBHwdBxDMluscIaTnPLcurk5INpEfV9`"
+                  to="/product/3AqvRNnfpnmOw1yIs9uhWAcABLUClWDEjoBHwdBxDMluscIaTnPLcurk5INpEfV9"
                   class="d-block item-hover">
                   <div class="mask">
                     <div class="caption">查看更多</div>
@@ -108,12 +106,13 @@
                     data-aos="zoom-in"
                     data-aos-delay="300"
                     class="img-fluid"
-                    src="https://images.unsplash.com/photo-1589674799058-82430f276350?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80" alt="">
+                    src="https://images.unsplash.com/photo-1589674799058-82430f276350?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80"
+                    alt="純粹之美婚戒">
                 </router-link>
               </div>
               <div class="col-md-6">
                 <router-link
-                  :to="`/product/UPYF4f2pgsWsH8L6AHr5BmFkdVchr4V4N5RXL5wGCAKWclFrYiAadVBCAbK65qfT`"
+                  to="/product/UPYF4f2pgsWsH8L6AHr5BmFkdVchr4V4N5RXL5wGCAKWclFrYiAadVBCAbK65qfT"
                   class="d-block item-hover">
                   <div class="mask">
                     <div class="caption">查看更多</div>
@@ -122,7 +121,8 @@
                     data-aos="zoom-in"
                     data-aos-delay="500"
                     class="img-fluid"
-                    src="https://images.unsplash.com/photo-1591209627710-d2427565a41f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="">
+                    src="https://images.unsplash.com/photo-1591209627710-d2427565a41f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+                    alt="太陽花白鑽戒指">
                 </router-link>
               </div>
             </div>
@@ -140,7 +140,7 @@
         <div class="row d-flex flex-row-reverse">
           <div class="col-md-5">
             <router-link
-              :to="`/product/DE2Y4UxbglhZDCBwkfO82p9sEivqRfXHi7fZmS9EMtknbGvhiivgzdIuWFEKNOHI`"
+              to="/product/DE2Y4UxbglhZDCBwkfO82p9sEivqRfXHi7fZmS9EMtknbGvhiivgzdIuWFEKNOHI"
               class="d-block item-hover">
               <div class="mask">
                 <div class="caption">查看更多</div>
@@ -153,7 +153,7 @@
           </div>
           <div class="col-md-7">
             <router-link
-              :to="`/product/hLgUBUjKeqAOBNh5JcfwI0DXEz1VkezFTkUzdwqhfCYvGd2wuIsqCZ15OadUkhBg`"
+              to="/product/hLgUBUjKeqAOBNh5JcfwI0DXEz1VkezFTkUzdwqhfCYvGd2wuIsqCZ15OadUkhBg"
               class="d-block item-hover">
               <div class="mask">
                 <div class="caption">查看更多</div>
@@ -163,7 +163,7 @@
             <div class="row mt-2">
               <div class="col-md-6 mb-2">
                 <router-link
-                  :to="`/product/DE2Y4UxbglhZDCBwkfO82p9sEivqRfXHi7fZmS9EMtknbGvhiivgzdIuWFEKNOHI`"
+                  to="/product/DE2Y4UxbglhZDCBwkfO82p9sEivqRfXHi7fZmS9EMtknbGvhiivgzdIuWFEKNOHI"
                   class="d-block item-hover" style="height: 240px">
                   <div class="mask">
                     <div class="caption">查看更多</div>
@@ -175,7 +175,7 @@
               </div>
               <div class="col-md-6">
                 <router-link
-                  :to="`/product/O4duZeluV92bTwoSQH6S5QM2KiznTsRndk5epsjnHcloOZiAb46GWy2NVw7fDyVW`"
+                  to="/product/O4duZeluV92bTwoSQH6S5QM2KiznTsRndk5epsjnHcloOZiAb46GWy2NVw7fDyVW"
                   class="d-block item-hover" style="height: 240px">
                   <div class="mask">
                     <div class="caption">查看更多</div>
@@ -201,7 +201,7 @@
         <div class="row">
           <div class="col-6">
             <router-link
-              :to="`/product/2AtxBa70Zn1dhBAJH3P7rvJ5sxRlrssZjucO3WdLAWusLEAivi3shgbTq9mhd4vk`"
+              to="/product/nIn4LicrcYXlffbpWKcaMxNExMh8B6vq6bdj6AGHpwupGWwnxBseWgpCYHp6uIT9"
               class="d-block img-change-t1 mb-2 shadow"
               data-aos="flip-left" data-aos-delay="700">
               <h5 class="img-title">simple<br>
@@ -210,7 +210,7 @@
           </div>
           <div class="col-6">
             <router-link
-              :to="`/product/lpKF8OH0ilAcW8zrJBgLnRnJ2FXIjfDhvW3oeESSNzZzE0Azze6X9v04oWaPTXCJ`"
+              to="/product/lpKF8OH0ilAcW8zrJBgLnRnJ2FXIjfDhvW3oeESSNzZzE0Azze6X9v04oWaPTXCJ"
               class="d-block img-change-t2 mb-2 shadow"
               data-aos="flip-left" data-aos-delay="700">
               <h5 class="img-title">luxurious<br>
@@ -221,7 +221,7 @@
         <div class="row">
           <div class="col-6 col-md-3">
             <router-link
-              :to="`/product/DE2Y4UxbglhZDCBwkfO82p9sEivqRfXHi7fZmS9EMtknbGvhiivgzdIuWFEKNOHI`"
+              to="/product/snws6fRyEoCjEzPJFcIhFvHrcbolbZ1WkEWcW2FDubePCfOTCdLJU2X0BpFKiZE8"
               class="d-block img-change-1 mb-2 shadow"
               data-aos="flip-left" data-aos-delay="700">
               <h5 class="img-title">classic<br>
@@ -230,7 +230,7 @@
           </div>
           <div class="col-6 col-md-3">
             <router-link
-              :to="`/product/2AtxBa70Zn1dhBAJH3P7rvJ5sxRlrssZjucO3WdLAWusLEAivi3shgbTq9mhd4vk`"
+              to="/product/lpKF8OH0ilAcW8zrJBgLnRnJ2FXIjfDhvW3oeESSNzZzE0Azze6X9v04oWaPTXCJ"
               class="d-block img-change-2 mb-2"
               data-aos="flip-left" data-aos-delay="800">
               <h5 class="img-title">Cross<br>
@@ -239,7 +239,7 @@
           </div>
           <div class="col-6 col-md-3">
             <router-link
-              :to="`/product/yrdRk3MdVf1t7fLpU2npCDiAl4LIIkGnGAy7rmLBgp5wfhsmrhdvxCA6wePBKmiu`"
+              to="/product/PEyUsOhVAf0d0NCqMW5OjtxjVAYZXW5bdNryAvBLRKvgW3gNO3dwO7XDgJIuk6KJ"
               class="d-block img-change-3 mb-2"
               data-aos="flip-left" data-aos-delay="900">
               <h5 class="img-title">Norway<br>
@@ -248,7 +248,7 @@
           </div>
           <div class="col-6 col-md-3">
             <router-link
-              :to="`/product/RnsdIS5AynpfvfAflX4Uy73kUfkwpvr0oCb70I51c54KpH5KJpkAZ4NqB2yMEd81`"
+              to="/product/pdpGZs4NpEHU9XDKQtUhXt0ed57BR64giZFmo0WrKpl2vsRPXMRn3OeEjCNPmq93"
               class="d-block img-change-4"
               data-aos="flip-left" data-aos-delay="1000">
               <h5 class="img-title">Exquisite<br>
@@ -282,13 +282,19 @@
           </div>
         </div>
       </section>
+      <Carousel/>
     </div>
   </div>
 </template>
 
 <script>
+import Carousel from '@/components/frontend/Carousel.vue';
+
 export default {
   name: 'Home',
+  components: {
+    Carousel,
+  },
   data() {
     return {
     };

@@ -73,8 +73,7 @@
                       v-model="form.tel"
                       placeholder="請輸入收件人電話"
                       name="電話"
-                      :class="classes"
-                    />
+                      :class="classes"/>
                     <!-- 錯誤訊息 -->
                     <span class="invalid-feedback">{{ errors[0] }}</span>
                   </validation-provider>
@@ -100,8 +99,7 @@
                       v-model="form.email"
                       placeholder="請輸入收件人Email"
                       name="信箱"
-                      :class="classes"
-                    />
+                      :class="classes"/>
                     <!-- 錯誤訊息 -->
                     <span class="invalid-feedback">{{ errors[0] }}</span>
                   </validation-provider>
@@ -159,7 +157,7 @@
             <!-- 送出表單使用 submit 的方法，如果驗證未通過則 disabled 該按鈕 -->
             <div class="row">
               <div class="col-6">
-                <router-link :to="`/cart`"
+                <router-link to="/cart"
                   class="btn btn-sm btn-outline-primary rounded-0 d-block btn-next">回上一步
                 </router-link>
               </div>
@@ -196,10 +194,13 @@ export default {
   methods: {
     // 新增優惠券
     addCoupon() {
+      this.isLoading = true;
       const url = `${process.env.VUE_APP_APIPATH}/api/${this.uuid}/ec/coupon/search`;
       this.$http.post(url, { code: this.coupon_code }).then((response) => {
         this.coupon = response.data.data;
+        this.isLoading = false;
       }).catch(() => {
+        this.isLoading = false;
       });
     },
 
@@ -210,10 +211,10 @@ export default {
       const order = { ...this.form };
       this.$http.post(api, order)
         .then((res) => {
-          this.isLoading = false;
           this.$router.push('/check');
           const { id } = res.data.data;
           this.$bus.$emit('form', id);
+          this.isLoading = false;
         })
         .catch(() => {
           this.isLoading = false;

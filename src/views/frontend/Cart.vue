@@ -138,7 +138,7 @@
               </div>
             </div>
           </div>
-          <router-link :to="`/orders`"
+          <router-link to="/orders"
             class="btn btn-sm btn-primary rounded-0 mt-3 d-block btn-next">下一步
           </router-link>
         </div>
@@ -152,7 +152,6 @@
           </router-link>
         </div>
       </div>
-
     </div>
   </div>
 </template>
@@ -176,38 +175,19 @@ export default {
     this.getCart();
   },
   methods: {
-    // 加到購物袋（post）
-    // addToCart(id, quantity = 1) { // 需代入 商品 id 及 商品數量（因為 api 文件上為 required）
-    //   // quantity=1 參數預設值給 1（因為最少會加入 1 個產品，不會加 0 個）
-    //   const url = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping`;
-    //   this.isLoading = true;
-    //   const cart = {
-    //     product: id, // id 透過參數的方式代入
-    //     quantity, // quantity: quantity 的簡寫，數量也是透過參數的方式代入
-    //   };
-    //   this.$http.post(url, cart) // （網址, 要傳送的物件）
-    //     .then(() => {
-    //       this.isLoading = false;
-    //     })
-    //     .catch(() => {
-    //       this.isLoading = false;
-    //     });
-    // },
-
     // 取出購物袋的內容（get）
     getCart() {
       const url = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping`;
       this.isLoading = true;
       this.$http.get(url)
         .then((res) => {
-          this.isLoading = false;
           this.carts = res.data.data;
-
           // 購物清單的總計會出現無限累加的現象，
           // 最簡單的解決方法為「每次進行累加時，就清空 this.cartTotal = 0」
           this.cartTotal = 0;
           // 執行 updateTotal 累加總金額
           this.updateTotal();
+          this.isLoading = false;
         })
         .catch(() => {
           this.isLoading = false;
@@ -232,9 +212,9 @@ export default {
       };
       this.$http.patch(url, cart)
         .then(() => {
-          this.isLoading = false;
           // 跑完之後要重新取得購物袋資料
           this.getCart();
+          this.isLoading = false;
         })
         .catch(() => {
           this.isLoading = false;
@@ -247,18 +227,18 @@ export default {
       const url = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping/all/product`;
       this.$http.delete(url)
         .then(() => {
-          this.isLoading = false;
           this.$bus.$emit('update-total');
           this.getCart();
           this.$bus.$emit('message:push',
             '購物袋已全部刪除。',
             'success');
+          this.isLoading = false;
         })
         .catch(() => {
-          this.isLoading = false;
           this.$bus.$emit('message:push',
             '刪除失敗',
             'danger');
+          this.isLoading = false;
         });
     },
 
@@ -268,18 +248,18 @@ export default {
       const url = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/shopping/${item.product.id}`;
       this.$http.delete(url)
         .then(() => {
-          this.isLoading = false;
           this.$bus.$emit('update-total');
           this.getCart();
           this.$bus.$emit('message:push',
             '購物袋已成功刪除這項商品。',
             'success');
+          this.isLoading = false;
         })
         .catch(() => {
-          this.isLoading = false;
           this.$bus.$emit('message:push',
             '刪除失敗',
             'danger');
+          this.isLoading = false;
         });
     },
 
@@ -289,17 +269,17 @@ export default {
       this.isLoading = true;
       this.$http.post(url, { code: this.couponCode })
         .then((res) => {
-          this.isLoading = false;
           this.coupon = res.data.data;
           this.$bus.$emit('message:push',
             '加入優惠碼成功。',
             'success');
+          this.isLoading = false;
         })
         .catch(() => {
-          this.isLoading = false;
           this.$bus.$emit('message:push',
             '此優惠碼無效。',
             'danger');
+          this.isLoading = false;
         });
     },
   },

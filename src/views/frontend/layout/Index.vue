@@ -1,5 +1,6 @@
 <template>
   <div class="wrapper">
+    <loading :active.sync="isLoading"></loading>
     <Navbar/>
     <router-view :products="products" v-if="getSuccesss"/>
     <div class="push"></div>
@@ -19,6 +20,7 @@ export default {
   },
   data() {
     return {
+      isLoading: false,
       products: [],
       pagination: {},
       getSuccesss: false,
@@ -30,11 +32,13 @@ export default {
   methods: {
     // 取所有產品列表
     getProducts() {
+      this.isLoading = true;
       this.$http.get(`${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/products?paged=33`)
         .then((res) => {
           this.getSuccesss = true;
           this.products = res.data.data;
           this.pagination = res.data.meta.pagination;
+          this.isLoading = false;
         })
         .catch(() => {
           this.isLoading = false;

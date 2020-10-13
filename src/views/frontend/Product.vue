@@ -101,7 +101,6 @@
           </div>
         </div>
       </section>
-
   </div>
   </div>
 </template>
@@ -130,7 +129,6 @@ export default {
       const { id } = this.$route.params;
       const url = `${process.env.VUE_APP_APIPATH}/${process.env.VUE_APP_UUID}/ec/product/${id}`;
       this.$http.get(url).then((res) => {
-        this.isLoading = false;
         this.tempProduct = {
           ...res.data.data,
           num: 1,
@@ -146,12 +144,12 @@ export default {
         if (this.relatedProducts.length > 3) {
           this.relatedProducts.splice(3);
         }
+        this.isLoading = false;
       })
         .catch(() => {
           this.isLoading = false;
         });
     },
-
     // 加到購物袋
     addToCart(item, quantity = 1) { // 需代入 商品 id 及 商品數量（因為 api 文件上為 required）
       // quantity=1 參數預設值給 1（因為最少會加入 1 個產品，不會加 0 個）
@@ -163,21 +161,20 @@ export default {
       };
       this.$http.post(url, cart)
         .then(() => {
-          this.isLoading = false;
           this.$bus.$emit('message:push',
             '成功加到購物袋。',
             'success');
           this.getDetailed();
           this.$bus.$emit('update-total');
+          this.isLoading = false;
         })
         .catch((error) => {
-          this.isLoading = false;
           this.$bus.$emit('message:push',
             error.response.data.errors[0],
             'danger');
+          this.isLoading = false;
         });
     },
-
     // 到單一產品細節頁面
     goPage(item) {
       this.$router.push(`/product/${item.id}`);

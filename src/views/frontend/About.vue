@@ -17,7 +17,8 @@
           data-aos="fade-up">
           <div class="box-list-img w-md-50 w-100">
             <img class="img-fluid"
-              src="https://images.unsplash.com/photo-1582738410730-9adf4fa313f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="">
+              alt="2010 品牌誕生"
+              src="https://images.unsplash.com/photo-1582738410730-9adf4fa313f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80">
           </div>
           <div class="box-list-txt w-md-50 w-100"
             data-aos="fade-up" data-aos-delay="500">
@@ -35,7 +36,8 @@
           <div class="box-list-img w-md-50 w-100"
             data-aos="fade-up" data-aos-delay="1500">
             <img class="img-fluid"
-              src="https://images.unsplash.com/photo-1586104130901-cb09c211fa15?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="">
+              alt="2012 設計產品"
+              src="https://images.unsplash.com/photo-1586104130901-cb09c211fa15?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80">
           </div>
           <div class="box-list-txt w-md-50 w-100"
             data-aos="fade-up" data-aos-delay="1000">
@@ -53,7 +55,8 @@
           <div class="box-list-img w-md-50 w-100"
             data-aos="fade-up">
             <img class="img-fluid"
-              src="https://images.unsplash.com/photo-1586104213933-81064a20b5e8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80" alt="">
+              alt="2014 設計產品"
+              src="https://images.unsplash.com/photo-1586104213933-81064a20b5e8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80">
           </div>
           <div class="box-list-txt w-md-50 w-100"
             data-aos="fade-up" data-aos-delay="500">
@@ -71,7 +74,8 @@
           <div class="box-list-img w-md-50 w-100"
             data-aos="fade-up" data-aos-delay="1000">
             <img class="img-fluid"
-              src="https://images.unsplash.com/photo-1547738238-5ddb16bef15f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="">
+              alt="2016 設計產品"
+              src="https://images.unsplash.com/photo-1547738238-5ddb16bef15f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80">
           </div>
           <div class="box-list-txt w-md-50 w-100"
             data-aos="fade-up" data-aos-delay="500">
@@ -89,7 +93,8 @@
           <div class="box-list-img w-md-50 w-100"
             data-aos="fade-up" data-aos-delay="1500">
             <img class="img-fluid"
-              src="https://images.unsplash.com/photo-1567523977592-7959bc5df51e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1291&q=80" alt="">
+              alt="2018 設計產品"
+              src="https://images.unsplash.com/photo-1567523977592-7959bc5df51e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1291&q=80">
           </div>
           <div class="box-list-txt w-md-50 w-100"
             data-aos="fade-up" data-aos-delay="2000">
@@ -109,12 +114,10 @@
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
 <script>
-
 export default {
   name: 'About',
   data() {
