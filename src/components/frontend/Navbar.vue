@@ -3,7 +3,7 @@
     <div class="nav-bg">
       <div class="container">
         <nav id="navbar"
-          class="navbar navbar-expand-lg navbar-light py-0 py-md-2">
+          class="navbar navbar-expand-lg navbar-light p-0 py-md-2">
           <!-- logo -->
           <div class="logo">
             <router-link :to="{ name: '首頁' }"
@@ -21,31 +21,31 @@
               <li class="nav-item" @click="toggler">
                 <router-link
                   :to="{ name: '所有產品' }"
-                  class="nav-bottom-hover nav-link px-md-3">所有產品
+                  class="nav-top nav-link px-md-3">所有產品
                 </router-link>
-                <hr class="nav-line">
+                <hr class="nav-line d-none d-md-block">
               </li>
               <li class="nav-item" @click="toggler">
                 <router-link :to="{ name: '品牌介紹' }"
-                class="nav-bottom-hover nav-link px-md-3">品牌介紹</router-link>
-                <hr class="nav-line">
+                class="nav-top nav-link px-md-3">品牌介紹</router-link>
+                <hr class="nav-line d-none d-md-block">
               </li>
             </ul>
             <!-- 右上方小 icon -->
             <ul class="nav form-inline my-2 my-lg-0">
               <li class="nav-item"
                 @click="toggler">
-                <router-link :to="{ name: '首頁' }" class="nav-link pl-0 pl-md-2">
+                <router-link :to="{ name: '首頁' }" class="nav-link nav-top-icon">
                   <i class="fas fa-home"></i>
                 </router-link>
               </li>
               <li class="nav-item">
-                <router-link to="/login" class="nav-link">
+                <router-link to="/login" class="nav-link nav-top-icon">
                   <i class="fas fa-user"></i>
                 </router-link>
               </li>
               <li class="nav-item" @click="toggler">
-                <router-link to="/cart" class="nav-link">
+                <router-link to="/cart" class="nav-link nav-top-icon">
                   <i class="fas fa-shopping-bag"></i>
                   <span class="badge badge-danger text-white badge-pill border-0 position-absolute"
                     style="transform: translateX(-10px) translateY(13px);font-size: 8px"
@@ -114,6 +114,10 @@ export default {
 </script>
 
 <style lang="scss">
+// color
+$color_primary: #49110a;
+$color_main: #FFF3E9;
+
 .nav-bg {
   transition: 0.5s;
 }
@@ -128,14 +132,19 @@ export default {
   .logo-text {
     font-size: 26px;
   }
+  #navbar .nav-item:hover {
+    background-color: rgba($color_primary, .2);
+  }
+  .logo {
+    padding-left: 15px;
+  }
+  .nav-top {
+    padding-left: 15px !important;
+  }
 }
 .nav-item:hover {
   .nav-line {
     width: 100%;
-  }
-  .nav-top {
-    padding-top: 0;
-    padding-bottom: 0;
   }
 }
 .nav-line {

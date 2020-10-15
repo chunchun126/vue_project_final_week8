@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="container px-0 mt-5 mt-md-0" id="bn">
+    <div class="container px-0" id="bn">
       <!-- banner -->
       <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -492,9 +492,9 @@ export default {
   transform: translateX(10px);
 }
 @media (max-width: 767px) {
-  #bn {
-    top: -70px;
-  }
+  // #bn {
+  //   top: -70px;
+  // }
   .bn-text {
     top: 150px;
     left: 10%;

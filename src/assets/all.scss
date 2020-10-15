@@ -112,9 +112,12 @@ $color_main: #FFF3E9;
   }
 }
 @media (max-width: 768px) {
-  .nav .nav-link {
-    padding-right: 12px;
-    padding-left: 12px;
+  .nav-top {
+    font-size: 22px;
+    padding: 20px 0px;
+  }
+  .nav-top-icon {
+    font-size: 22px;
   }
 }
 .collapse-custom {

@@ -98,13 +98,13 @@
             <div class="row">
               <div class="col-md-5 offset-md-7">
                 <div class="form-group">
-                  <div class="input-group">
+                  <div class="input-group coupon">
                     <input type="text"
                       v-model="couponCode"
-                      class="form-control input-style" id="coupon"
+                      class="form-control rounded-0" id="coupon"
                       placeholder="請輸入優惠碼">
                     <div class="input-group-append">
-                      <button class="btn btn-primary input-style"
+                      <button class="btn btn-primary"
                         type="button"
                         @click="addCoupon">
                         套用優惠碼
@@ -327,5 +327,8 @@ export default {
 }
 .total-price {
   font-size: 20px;
+}
+.coupon .btn, .coupon input {
+  font-size: 18px;
 }
 </style>

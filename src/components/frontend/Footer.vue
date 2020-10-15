@@ -22,7 +22,7 @@
             </router-link>
           </li>
         </ul>
-        <ul class="nav">
+        <ul class="nav footer-icon-ul">
           <li class="nav-item">
             <a class="nav-link footer-icon" href="https://www.facebook.com/hexschool/" target="_blank">
               <i class="fab fa-facebook-square"></i>
@@ -42,7 +42,10 @@
         </ul>
       </div>
       <div class="d-md-flex justify-content-between copyright">
-        <p class="mb-2">Bien-aimé Copyright © 2020 Online Shop All rights reserved.</p>
+        <p class="mb-2">
+          <span>Bien-aimé Copyright © 2020 </span>
+          <span class="d-none d-md-block">Online Shop All rights reserved.</span>
+        </p>
         <p class="d-none d-md-block">圖片僅為練習使用，無商業用途。</p>
       </div>
     </footer>
@@ -78,9 +81,16 @@ export default {
   padding-left: 16px;
 }
 @media (max-width: 767px) {
+  .footer-icon-ul {
+    margin: 0 auto;
+  }
   .footer-icon {
     font-size: 44px;
     padding: 10px 16px !important;
+  }
+  .copyright {
+    text-align: center;
+    padding-left: 0px;
   }
 }
 </style>

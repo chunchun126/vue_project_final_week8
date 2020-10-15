@@ -32,7 +32,7 @@
             </div>
           </div>
         </div>
-        <div id="options" class="col d-lg-none sticky-top px-3"
+        <div id="options" class="col d-lg-none sticky-top px-3 bg-white"
           style="top: 55px">
           <select class="form-control my-3"
             @change="categoryData($event.target.value)" v-if="category.list">
@@ -93,17 +93,6 @@
 </template>
 
 <script>
-/* global $ */
-
-// 導覽列往下滑
-$(window).scroll(() => {
-  if ($(window).scrollTop() > 0) {
-    $('#options').addClass('bg-main');
-  } else if ($(window).scrollTop() <= 0) {
-    $('#options').removeClass('bg-main');
-  }
-});
-
 export default {
   name: 'Products',
   data() {
@@ -187,9 +176,6 @@ export default {
 </script>
 
 <style lang="scss">
-#options {
-  transition: 0.5s;
-}
 .cursor {
   cursor: pointer;
 }
