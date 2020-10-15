@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="container pt-md-5">
+    <div class="container pt-md-5 mt-5">
       <ul class="step list-unstyled d-flex text-center
         justify-content-center pb-5 text-primary">
-        <li>
+        <li class="pb-3">
           <p>購物袋</p>
           <div class="step-line"></div>
           <div class="step-sign solid"></div>
@@ -26,14 +26,12 @@
     </div>
     <div class="container">
       <div class="row">
-        <div class="col">
-          <img class="successImg"
-            src="https://images.unsplash.com/photo-1579726670107-e543fc48ddbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
-            alt="交易成功">
+        <div class="col px-0 px-md-3">
+          <div class="successImg"></div>
           <div class="success text-center">
             <i class="far fa-check-circle"></i>
             <p class="h2 mt-3">交易成功</p>
-            <p class="mb-2">感謝您的訂購，<br>歡迎再度光臨選購。</p>
+            <p class="mb-2 success-txt">感謝您的訂購，<br>歡迎再度光臨選購。</p>
             <router-link to="/"
               class="btn btn-sm btn-primary rounded-0">繼續購物
             </router-link>
@@ -56,20 +54,23 @@ export default {
   color: rgb(170, 170, 170);
 }
 .success {
-  height: 500px;
-  padding-top: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .successImg {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 0;
-  max-width: 800px;
+  background-image: url(https://images.unsplash.com/photo-1579726670107-e543fc48ddbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);
+  background-size: cover;
+  height: 578px;
 }
 @media (max-width: 767px) {
   .push {
     height: 0;
   }
+}
+.success-txt {
+  font-size: 18px;
+  line-height: 30px;
 }
 </style>

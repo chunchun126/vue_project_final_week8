@@ -4,14 +4,15 @@
     <section class="section section-hot">
       <div id="carouselExampleInterval" class="carousel slide text-center" data-ride="carousel">
         <div class="text-primary mt-4">
-          <h5>熱賣中<span class="badge rounded-0 ml-1" style="top: -5px">HOT</span></h5>
-          <p class="section-subtitle font-weight-lighter mb-0">熱銷款︱首購優選︱特價優惠</p>
+          <h4 class="mb-2">熱銷排行榜</h4>
+          <p class="section-subtitle mb-0">暢銷款︱首購優選︱特價優惠</p>
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active" data-interval="3000">
-            <div class="row px-5 py-3">
+            <div class="row px-md-5 px-4 py-3">
               <div class="card col-md-4 rounded-0 border-0"
                 v-for="item in hotSales1" :key="item.id">
+                <span class="rankbadge badge badge-danger text-white">HOT</span>
                 <router-link
                   :to="`/product/${item.id}`"
                   class="d-block item-img">
@@ -27,10 +28,10 @@
                       {{ item.category }}
                     </small>
                   </h6>
-                  <p class="card-text text-muted origin-price mb-1 d-none d-md-block">
+                  <p class="card-text text-muted origin-price mb-2 d-none d-md-block">
                     定價 NT${{ item.origin_price | thousands }}
                   </p>
-                  <p class="card-text price mb-1">
+                  <p class="card-text price mb-2">
                     <small class="mr-2">優惠價</small>
                     <span class="h6">NT${{ item.price | thousands }}</span>
                   </p>
@@ -44,9 +45,10 @@
             </div>
           </div>
           <div class="carousel-item" data-interval="2000">
-            <div class="row px-5 py-3">
+            <div class="row px-md-5 px-4 py-3">
               <div class="card col-md-4 rounded-0 border-0"
                 v-for="item in hotSales2" :key="item.id">
+                <span class="rankbadge badge badge-danger text-white">SALE</span>
                 <router-link
                   :to="`/product/${item.id}`"
                   class="d-block item-img">
@@ -62,10 +64,10 @@
                       {{ item.category }}
                     </small>
                   </h6>
-                  <p class="card-text text-muted origin-price mb-1 d-none d-md-block">
+                  <p class="card-text text-muted origin-price mb-2 d-none d-md-block">
                     定價 NT${{ item.origin_price | thousands }}
                   </p>
-                  <p class="card-text price mb-1">
+                  <p class="card-text price mb-2">
                     <small class="mr-2">優惠價</small>
                     <span class="h6">NT${{ item.price | thousands }}</span>
                   </p>
@@ -185,6 +187,14 @@ export default {
 </script>
 
 <style lang="scss">
+.rankbadge {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  border: none;
+  z-index: 500;
+  font-size: 14px;
+}
 @media (max-width: 768px) {
   .card:nth-child(odd) {
     display: none;

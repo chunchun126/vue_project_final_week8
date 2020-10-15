@@ -4,7 +4,7 @@
     <div class="container pt-md-5 mt-5">
       <ul class="step list-unstyled d-flex text-center
         justify-content-center pb-5 text-primary">
-        <li>
+        <li class="pb-3">
           <p>購物袋</p>
           <div class="step-line"></div>
           <div class="step-sign solid"></div>
@@ -49,42 +49,37 @@
                 </div>
               </div>
               <div class="col-md-5 d-flex flex-column justify-content-between">
-                <div class="h5 mt-2 pb-1"
-                  style="border-bottom: 1px solid">{{ item.product.title }}
-                  <small class="badge rounded-0 ml-1 mb-2 bg-main border-0"
-                    style="font-size: 10px">
+                <div class="cart-item-title mt-2">{{ item.product.title }}
+                  <small class="badge rounded-0 ml-1 mb-2 bg-main border-0">
                     {{ item.product.category }}
                   </small>
                 </div>
-                <div class="text-white">
-                  <small class="text-white badge rounded-0 ml-1 mb-2 bg-primary border-0"
-                    style="font-size: 10px">
-                    優惠商品
-                  </small>
+                <div class="text-primary my-3">
+                  <p class="sale mb-2">全館歡慶10週年，輸入優惠碼，現折100元！</p>
+                  <h6 class="text-white badge rounded-0 bg-primary border-0">
+                    優惠碼：HAPPY10
+                  </h6>
                 </div>
                 <div class="addNumber">
                   <div class="d-flex mb-2 align-items-center">
                     <span class="w-25">數量</span>
                     <div class="input-group input-group-sm w-75">
-                      <div class="input-group-prepend">
-                        <button class="btn btn-outline-secondary rounded-0"
+                      <div class="input-group-prepend h-100">
+                        <button class="lh0 btn btn-outline-secondary"
                           type="button"
                           :disabled="item.quantity <= 1"
-                          @click="updateQuantity(item.product.id, item.quantity - 1)">
-                          <i class="fas fa-minus align-middle"></i>
-                        </button>
+                          @click="updateQuantity(item.product.id, item.quantity - 1)"
+                        >-</button>
                       </div>
-                      <input type="number"
-                        class="form-control text-center bg-white"
+                      <input type="number" class="h-100 form-control text-center bg-white"
                         min="1"
                         v-model="item.quantity"
                         @change="updateQuantity(item.product.id, item.quantity)" disabled>
-                      <div class="input-group-append">
-                        <button class="btn btn-outline-secondary rounded-0"
+                      <div class="input-group-append h-100">
+                        <button class="lh0 btn btn-outline-secondary"
                           type="button"
-                          @click="updateQuantity(item.product.id, item.quantity + 1)">
-                          <i class="fas fa-plus align-middle"></i>
-                        </button>
+                          @click="updateQuantity(item.product.id, item.quantity + 1)"
+                        >+</button>
                       </div>
                     </div>
                   </div>
@@ -118,21 +113,21 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-5 offset-md-7 d-flex text-primary"
+              <div class="sale col-md-5 offset-md-7 d-flex text-primary"
                 v-if="coupon.enabled">
                 <span>優惠碼折扣</span>
                 <span class="ml-auto"> － NT $ {{ coupon.percent }}</span>
               </div>
-              <div class="col-md-5 offset-md-7 d-flex mt-3">
-                <span class="pt-1">合計</span>
-                <div class="ml-auto px-2 pt-1"
+              <div class="col-md-5 offset-md-7 d-flex mt-3 align-items-center">
+                <span class="total">合計</span>
+                <div class="total-price ml-auto p-1"
                   v-if="coupon.enabled"
-                  style="border: solid 1px;font-size: 22px">
+                  style="border: solid 1px">
                   NT $ {{ cartTotal - coupon.percent | thousands }}
                 </div>
-                <div class="ml-auto px-2 pt-1"
+                <div class="total-price ml-auto p-1"
                   v-else
-                  style="border: solid 1px;font-size: 22px">
+                  style="border: solid 1px">
                   NT $ {{ cartTotal | thousands }}
                 </div>
               </div>
@@ -307,5 +302,30 @@ export default {
     color: #000;
     text-decoration: none;
   }
+}
+.cart-item-title {
+  font-size: 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+.sale {
+  font-size: 16px;
+  line-height: 24px;
+}
+.addNumber {
+  span,.total {
+    font-size: 18px;
+  }
+}
+.input-group {
+  height: 30px;
+}
+.addNumber button.lh0 {
+  line-height: 0.5 !important;
+}
+.total {
+  font-size: 18px;
+}
+.total-price {
+  font-size: 20px;
 }
 </style>

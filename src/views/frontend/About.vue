@@ -3,15 +3,13 @@
     <div class="about-bn">
       <div class="text-center text-muted">
         <div class="about-bn-inner">
-          <h2 class="pt-2">堅持最優質</h2>
-          <span>Bien-aimé 創立於 2010 年，堅持研選最高品質，搭配純手工製作，</span>
-          <br>
-          <span>讓講求生活品味與細節的您，能感受到我們的用心。</span>
+          <h2 class="pb-2">堅持最優質</h2>
+          <span>Bien-aimé 創立於 2010 年，堅持研選最高品質，搭配純手工製作，讓講求生活品味與細節的您，能感受到我們的用心。</span>
         </div>
       </div>
     </div>
-    <div class="container py-5">
-      <h2 class="title mb-5">About</h2>
+    <div class="container py-4">
+      <h2 class="title mb-5"><i class="fas fa-angle-double-down"></i></h2>
       <div class="box">
         <div class="box-list d-md-flex d-block"
           data-aos="fade-up">
@@ -25,7 +23,7 @@
             <div class="box_list_txt_r">
                 <p class="date">since 2010</p>
                 <div class="box6_list_txt_g">
-                  <h3 class="mb-0">誕生</h3>
+                  <h3 class="mb-0 text-primary">誕生</h3>
                   <small>Elegant & meticulous</small>
                   <p class="mt-3 mb-5">以優雅細緻為創作理念，力臻極佳品質。</p>
                 </div>
@@ -44,7 +42,7 @@
             <div class="box_list_txt_l">
                 <p class="date">since 2012</p>
                 <div class="box6_list_txt_g">
-                  <h3 class="mb-0">華麗</h3>
+                  <h3 class="mb-0 text-primary">華麗</h3>
                   <small>Gorgeous & Petal</small>
                   <p class="mt-3 mb-5">以花瓣為設計理念，營造華麗耀眼的光芒。</p>
                 </div>
@@ -63,7 +61,7 @@
             <div class="box_list_txt_r">
                 <p class="date">since 2014</p>
                 <div class="box6_list_txt_g">
-                  <h3 class="mb-0">永恆</h3>
+                  <h3 class="mb-0 text-primary">永恆</h3>
                   <small>Classic & Eternal</small>
                   <p class="mt-3 mb-5">以簡約經典為設計主軸，創造無限永恆。</p>
                 </div>
@@ -82,7 +80,7 @@
             <div class="box_list_txt_l">
                 <p class="date">since 2016</p>
                 <div class="box6_list_txt_g">
-                  <h3 class="mb-0">時尚</h3>
+                  <h3 class="mb-0 text-primary">時尚</h3>
                   <small>Modern & Fashion</small>
                   <p class="mt-3 mb-5">以平日都適合搭配為理念，創造現代時尚美學</p>
                 </div>
@@ -101,7 +99,7 @@
             <div class="box_list_txt_r">
                 <p class="date">since 2018</p>
                 <div class="box6_list_txt_g">
-                  <h3 class="mb-0">刻字</h3>
+                  <h3 class="mb-0 text-primary">刻字</h3>
                   <small>Unique & Lettering</small>
                   <p class="mt-3 mb-5">最新刻字服務，讓您的商品獨一無二。</p>
                 </div>
@@ -145,8 +143,45 @@ export default {
   margin: 0 auto;
 }
 .about-bn-inner {
-  padding-top: 460px
+  padding-top: 160px;
+  h2 {
+    font-size: 28px;
+  }
+  span {
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    width: 600px;
+    display: block;
+    margin: 0 auto;
+  }
 }
+.box-list-txt {
+  h3 {
+    font-size: 36px;
+    font-family: 'Noto Serif TC';
+    margin-top: 20px;
+    margin-bottom: 30px;
+    line-height: 50px;
+  }
+  p {
+    font-size: 20px;
+    font-family: 'Noto Serif TC';
+    font-weight: 300;
+    line-height: 30px;
+  }
+  .date {
+    font-family: 'Noto Sans TC';
+    font-weight: 400;
+  }
+  small {
+    font-size: 16px;
+    color: #999;
+    letter-spacing: 1px;
+  }
+}
+
 @media (max-width: 767px) {
   .about-bn {
     height: 300px;
@@ -155,17 +190,27 @@ export default {
     background-attachment: initial;
   }
   .about-bn-inner {
-    font-size: 12px;
-    padding-top: 220px
+    padding-top: 220px;
+    span {
+      font-size: 15px;
+      line-height: 24px;
+      width: 300px;
+    }
   }
 }
 h2.title {
   color: #4D4D4D;
-  padding-bottom: 12px;
-  margin-bottom: 20px;
-  font-size: 14px;
+  font-size: 20px;
   text-align: center;
-  text-decoration: underline;
+  animation-name: example;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  top: -10px;
+}
+@keyframes example {
+  0%   {top:0px;}
+  50%  {top:10px;}
+  100% {top:0px;}
 }
 .box-list-img {
   overflow: hidden;

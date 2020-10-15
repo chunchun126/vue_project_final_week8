@@ -3,7 +3,7 @@
     <div class="nav-bg">
       <div class="container">
         <nav id="navbar"
-          class="navbar navbar-expand-lg navbar-light py-0">
+          class="navbar navbar-expand-lg navbar-light py-0 py-md-2">
           <!-- logo -->
           <div class="logo">
             <router-link :to="{ name: '首頁' }"
@@ -11,7 +11,7 @@
               Bien-aimé
             </router-link>
           </div>
-          <button class="navbar-toggler" type="button"
+          <button class="navbar-toggler btn btn-sm border-0" type="button"
           data-toggle="collapse" data-target="#navbarTogglerDemo02"
           aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -119,13 +119,16 @@ export default {
 }
 .logo-text {
   font-size: 30px;
+  font-family: 'Noto Serif', serif;
+}
+.nav-link {
+  font-weight: 400;
 }
 @media (max-width: 767px) {
   .logo-text {
     font-size: 26px;
   }
 }
-
 .nav-item:hover {
   .nav-line {
     width: 100%;

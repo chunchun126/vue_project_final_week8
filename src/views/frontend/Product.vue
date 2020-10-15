@@ -13,22 +13,21 @@
           </div>
         </div>
         <div class="col-md-4 offset-md-1">
-          <h5 class="font-weight-light mb-0 mt-2">{{ tempProduct.title }}
-            <small class="badge rounded-0 ml-1 mb-2 bg-main border-0"
-                    style="font-size: 10px">
+          <h5 class="item-title mt-2">{{ tempProduct.title }}
+            <small class="badge rounded-0 ml-1 mb-2 bg-main border-0">
               {{ tempProduct.category }}
             </small>
           </h5>
           <hr class="mt-0" style="border-top: 1px solid rgba(0, 0, 0, 0.5);">
-          <p class="card-text origin-price mb-3 text-muted"
+          <p class="origin-price-lg my-4 text-muted"
             v-if="tempProduct.origin_price">
             定價 NT${{ tempProduct.origin_price | thousands }}
           </p>
-          <h5 class="card-text mb-3 text-primary">
-            <small class="mr-2">優惠價</small>
+          <h5 class="price-lg mb-3 text-primary">
+            <small class="mr-2 h6">優惠價</small>
             <span v-if="tempProduct.price">NT${{ tempProduct.price | thousands }}</span>
           </h5>
-          <button type="button" class="btn btn-primary btn-sm rounded-0 w-100"
+          <button type="button" class="addBtn btn btn-primary btn-sm rounded-0 w-100"
             @click="addToCart(tempProduct.id, tempProduct.num)">
             <i class="fas fa-shopping-bag mr-1"></i>
             <small>加入購物袋</small>
@@ -36,20 +35,20 @@
           <div class="detail mt-4" v-if="tempProduct.options">
             <div class="mb-2">
               <i class="fas fa-gem" style="width: 30px"></i>
-              <span class="mb-1">材料：</span>
+              <h6 class="mb-1">材料：</h6>
               <br>
               <span style="margin-left: 30px">{{ tempProduct.options.material }}</span>
             </div>
             <div>
               <i class="fas fa-ruler" style="width: 30px"></i>
-              <span class="mb-1">尺寸：</span>
+              <h6 class="mb-1">尺寸：</h6>
               <br>
               <span style="margin-left: 30px">{{ tempProduct.options.size }}</span>
             </div>
-            <hr class="" style="border-top: 1px solid rgba(0, 0, 0, 0.5);">
-            <div class="mb-3">
+            <hr style="border-top: 1px solid rgba(0, 0, 0, 0.5);">
+            <div class="mb-1">
               <i class="fas fa-stream" style="width: 30px"></i>
-              <span>產品描述：</span>
+              <h6>產品描述：</h6>
             </div>
             <p>{{ tempProduct.description }}</p>
           </div>
@@ -60,8 +59,8 @@
         <div id="carouselExampleInterval" class="carousel slide text-center pt-4"
           data-ride="carousel">
           <div class="text-primary">
-            <h5>相關項目</h5>
-            <p class="section-subtitle font-weight-lighter mb-0">查看了此商品的顧客還查看了</p>
+            <h5 class="mb-2 related">相關項目</h5>
+            <p class="section-subtitle">查看了此商品的顧客還查看了</p>
           </div>
           <div class="row p-3">
             <div class="card col-md-4 rounded-0 border-0"
@@ -77,21 +76,20 @@
                 </div>
               </a>
               <div class="card-body p-2">
-                <h6 class="font-weight-light product-title mb-0">{{ item.title }}
-                  <small class="badge rounded-0 ml-1 mb-2 bg-main border-0"
-                    style="font-size: 10px">
+                <h6 class="product-title mb-0">{{ item.title }}
+                  <small class="badge rounded-0 ml-1 mb-2 bg-main border-0">
                     {{ item.category }}
                   </small>
                 </h6>
-                <p class="card-text origin-price mb-1 text-muted"
+                <p class="origin-price mb-2 text-muted"
                   v-if="item.origin_price">
                   定價 NT${{ item.origin_price | thousands }}
                 </p>
-                <p class="card-text price mb-1">
+                <p class="price mb-2">
                   <small class="mr-2">優惠價</small>
                   <span v-if="item.price">NT${{ item.price | thousands }}</span>
                 </p>
-                <a href="#" class="btn btn-outline-secondary btn-sm rounded-0 w-100"
+                <a href="#" class="addBtn btn btn-outline-secondary btn-sm rounded-0 w-100"
                   @click.prevent="addToCart(item.id)">
                   <i class="fas fa-shopping-bag mr-1"></i>
                   <small>加入購物袋</small>
@@ -184,10 +182,46 @@ export default {
 };
 </script>
 
-<style lang="css">
+<style lang="scss">
 .view-change {
   width: 30%;
   cursor: pointer;
   margin-left: 2.5%;
+}
+.item-title {
+  font-size: 30px;
+}
+.origin-price-lg {
+  font-size: 18px;
+  text-decoration: line-through;
+}
+.price-lg {
+  small {
+    font-size: 18px;
+  }
+  span {
+    font-size: 24px;
+    font-weight: 500;
+  }
+}
+.detail {
+  font-size: 16px;
+  line-height: 30px;
+  letter-spacing: 1px;
+  span,p {
+    font-weight: 300;
+  }
+  h6,i {
+    display: inline-block;
+    font-size: 18px;
+    color: #777;
+  }
+}
+.related {
+  font-size: 24px;
+  border-bottom: 1px solid #000;
+  padding-bottom: 12px;
+  width: 240px;
+  margin: 0 auto;
 }
 </style>

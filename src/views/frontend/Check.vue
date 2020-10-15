@@ -1,10 +1,10 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <div class="container pt-5  mt-5 mt-md-0">
+    <div class="container pt-md-5 mt-5">
       <ul class="step list-unstyled d-flex text-center
         justify-content-center pb-5 text-primary">
-        <li>
+        <li class="pb-3">
           <p>購物袋</p>
           <div class="step-line"></div>
           <div class="step-sign solid"></div>
@@ -16,7 +16,7 @@
         </li>
         <li>
           <p>確認訂單</p>
-          <div class="step-line"></div>
+          <div class="step-line bg-secondary"></div>
           <div class="step-sign solid"></div>
         </li>
         <li>
@@ -61,9 +61,9 @@
                 </div>
               </div>
             </div>
-            <div class="row justify-content-center">
+            <div class="recip-total row justify-content-center">
               <div class="col-md-10 content bg-white">
-                <div class="d-flex px-3 pt-1">
+                <div class="d-flex px-3 py-1">
                   <span>總價</span>
                   <span class="ml-auto"
                     v-if="order.amount">
@@ -165,5 +165,8 @@ export default {
 <style lang="scss">
 .recip {
   color: rgb(167, 167, 167);
+  table, .recip-total {
+    font-size: 18px;
+  }
 }
 </style>

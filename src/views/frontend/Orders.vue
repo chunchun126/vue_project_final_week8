@@ -1,28 +1,28 @@
 <template>
-  <div class="container pt-5 mt-5 mt-md-0">
+  <div class="container pt-md-5 mt-5">
     <loading :active.sync="isLoading"></loading>
     <ul class="step list-unstyled d-flex text-center
-        justify-content-center pb-5 text-primary">
-        <li>
-          <p>購物袋</p>
-          <div class="step-line"></div>
-          <div class="step-sign solid"></div>
-        </li>
-        <li>
-          <p>填寫訂單</p>
-          <div class="step-line"></div>
-          <div class="step-sign solid"></div>
-        </li>
-        <li>
-          <p class="text-muted">確認訂單</p>
-          <div class="step-line bg-secondary"></div>
-          <div class="step-sign" style="border: solid 2px gray"></div>
-        </li>
-        <li>
-          <p class="text-muted">交易成功</p>
-          <div class="step-sign" style="border: solid 2px gray"></div>
-        </li>
-      </ul>
+      justify-content-center pb-5 text-primary">
+      <li class="pb-3">
+        <p>購物袋</p>
+        <div class="step-line"></div>
+        <div class="step-sign solid"></div>
+      </li>
+      <li>
+        <p>填寫訂單</p>
+        <div class="step-line bg-secondary"></div>
+        <div class="step-sign solid"></div>
+      </li>
+      <li>
+        <p class="text-muted">確認訂單</p>
+        <div class="step-line bg-secondary"></div>
+        <div class="step-sign" style="border: solid 2px gray"></div>
+      </li>
+      <li>
+        <p class="text-muted">交易成功</p>
+        <div class="step-sign" style="border: solid 2px gray"></div>
+      </li>
+    </ul>
     <div class="mb-5 row justify-content-center">
       <div class="col-md-8">
         <!-- validation-observer 驗證整體表單 -->

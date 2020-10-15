@@ -12,10 +12,11 @@
             <div class="carousel-item active" data-interval="2000">
               <div class="banner-img1"></div>
               <div class="carousel-caption bn-text text-left" style="top: 50%">
-                <p class="mb-0 h1 text-primary title-eng">L'amour</p>
-                <p class="text-primary mb-2 d-md-block d-none">︱ 婚 戒 系 列 ︱</p>
-                <small class="text-primary d-md-block d-none">Design by Bien-aimé</small>
-                <a href="#wed" class="rounded-0 bg-primary text-white morebtn">查看更多
+                <p class="mb-1 text-primary title-eng">L'amour</p>
+                <p class="text-primary d-md-block d-none title-ch mb-3">︱ 婚 戒 系 列 ︱</p>
+                <small class="text-primary d-md-block d-none mb-2">Design by Bien-aimé</small>
+                <a href="#wed" class="btn btn-sm rounded-0 btn-primary morebtn"
+                  role="button">查看更多
                 </a>
               </div>
             </div>
@@ -23,11 +24,11 @@
             <div class="banner-img2"></div>
             <div class="carousel-caption bn-text text-left"
               style="top: 40%;left: 120px">
-              <p class="mb-0 h1 text-white title-eng">La Manière</p>
-              <p class="text-primary d-md-block d-none">︱ 摩 登 系 列 ︱</p>
-              <small class="text-white d-md-block d-none">Design by Bien-aimé</small>
-              <a href="#fash" class="btn btn-sm rounded-0 btn-primary"
-                style="width: 130px">
+              <p class="mb-1 text-white title-eng">La Manière</p>
+              <p class="text-primary d-md-block d-none title-ch mb-3">︱ 摩 登 系 列 ︱</p>
+              <small class="text-white d-md-block d-none mb-2">Design by Bien-aimé</small>
+              <a href="#fash"
+                class="btn btn-sm rounded-0 btn-primary morebtn" role="button">
                 查看更多
               </a>
             </div>
@@ -35,11 +36,11 @@
           <div class="carousel-item" data-interval="2000">
             <div class="banner-img3"></div>
             <div class="carousel-caption bn-text text-right" style="top: 50%">
-              <p class="mb-0 h1 text-primary title-eng">Classical</p>
-              <p class="text-primary d-md-block d-none">︱ 經 典 系 列 ︱</p>
-              <small class="text-primary d-md-block d-none">Design by Bien-aimé</small>
-              <a href="#class" class="btn btn-sm rounded-0 btn-primary"
-                style="width: 130px">
+              <p class="mb-1 text-primary title-eng">Classical</p>
+              <p class="text-primary d-md-block d-none title-ch mb-3">︱ 經 典 系 列 ︱</p>
+              <small class="text-primary d-md-block d-none mb-2">Design by Bien-aimé</small>
+              <a href="#class"
+                class="btn btn-sm rounded-0 btn-primary morebtn" role="button">
                 查看更多
               </a>
             </div>
@@ -60,8 +61,8 @@
       <section id="wed" class="section text-center">
         <div class="section-title" data-aos="fade-up">
           <div class="mb-0 mb-2 py-2 text-primary" style="background-color: rgba(0,0,0,0.1)">
-            <h3 class="title-eng">L'amour</h3>
-            <small style="font-size: 18px">︱ 婚戒系列 ︱ Bien-aimé 研選</small>
+            <h3 class="title-eng mb-2">L'amour</h3>
+            <small class="title-ch">︱ 婚 戒 系 列 ︱ Bien-aimé 研 選</small>
           </div>
         </div>
         <div class="row">
@@ -70,7 +71,7 @@
               to="/product/3AqvRNnfpnmOw1yIs9uhWAcABLUClWDEjoBHwdBxDMluscIaTnPLcurk5INpEfV9"
               class="d-block item-hover">
               <div class="mask">
-                <div class="caption">查看更多1</div>
+                <div class="caption">查看更多</div>
               </div>
               <div class="img-l"
                 data-aos="zoom-in"
@@ -133,8 +134,8 @@
       <section id="fash" class="section text-center">
         <div class="section-title" data-aos="fade-up">
           <div class="mb-0 mb-2 py-2 text-primary" style="background-color: rgba(0,0,0,0.1)">
-            <h3 class="title-eng">La Manière</h3>
-            <small style="font-size: 18px">︱ 摩登系列 ︱ Bien-aimé 設計</small>
+            <h3 class="title-eng mb-2">La Manière</h3>
+            <small class="title-ch">︱ 摩 登 系 列 ︱ Bien-aimé 設 計</small>
           </div>
         </div>
         <div class="row d-flex flex-row-reverse">
@@ -194,8 +195,8 @@
         <div class="section-title"
           data-aos="fade-up" data-aos-delay="300">
           <div class="mb-0 mb-2 py-2 text-primary" style="background-color: rgba(0,0,0,0.1)">
-            <h3 class="title-eng">Classical</h3>
-            <small style="font-size: 18px">︱ 經典系列 ︱ Bien-aimé 推薦</small>
+            <h3 class="title-eng mb-2">Classical</h3>
+            <small class="title-ch">︱ 經 典 系 列 ︱ Bien-aimé 推 薦</small>
           </div>
         </div>
         <div class="row">
@@ -262,12 +263,19 @@
           <div class="row">
             <div class="col-md-6 mb-2">
               <div class="map-text bg-main text-muted">
-                <h4 class="text-primary mb-5"
-                  style="border-bottom: 1px solid">實體店面地址</h4>
+                <h4 class="text-primary mb-5 map-title">實體店面地址</h4>
                 <h5 class="mb-3">ATT 4 FUN 信義店</h5>
-                <p>地址：110台北市信義區松壽路12號</p>
-                <p>營業時間：週一至週日 11:00–22:00</p>
-                <p>電話：+886287808111</p>
+                <ul class="contact">
+                  <li>
+                    <i class="fas fa-map-marked-alt"></i>
+                    地址：110台北市信義區松壽路12號</li>
+                  <li>
+                    <i class="far fa-calendar-alt"></i>
+                    營業時間：週一至週日 11:00–22:00</li>
+                  <li>
+                    <i class="fas fa-phone"></i>
+                    電話：<a href="tel:+886287808111">+886 287808111</a></li>
+                </ul>
               </div>
             </div>
             <div class="col-md-6">
@@ -304,10 +312,20 @@ export default {
 
 <style lang="scss">
 .title-eng {
-  font-size: 48px;
-  font-family: 'Lora', serif;
+  font-size: 40px;
+  font-family: 'Noto Serif', serif;
   font-style: italic;
-  font-weight: 500;
+  font-weight: 400;
+}
+.title-ch {
+  font-size: 20px;
+}
+.carousel-item small {
+  font-size: 16px;
+}
+.morebtn {
+  font-weight: 300;
+  font-size: 18px;
 }
 .banner-img1 {
   background-image: url(https://images.unsplash.com/photo-1549488497-94b52bddac5d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80);
@@ -336,6 +354,7 @@ export default {
   background-size: cover;
   background-position: center center;
   transition: ease 0.5s;
+  vertical-align: middle;
   &:hover {
     transform: scale(1.3);
   }
@@ -346,6 +365,7 @@ export default {
   background-size: cover;
   background-position: center center;
   transition: ease 0.5s;
+  vertical-align: middle;
   &:hover {
     transform: scale(1.3);
   }
@@ -355,18 +375,21 @@ export default {
   background-image: url(https://images.unsplash.com/photo-1596942506460-9123e66e5d84?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=619&q=80);
   background-size: cover;
   background-position: center 30%;
+  vertical-align: middle;
 }
 .img-bl {
   height: 240px;
   background-image: url(https://images.unsplash.com/photo-1600534932446-73938958d25f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1353&q=80);
   background-size: cover;
   background-position: center center;
+  vertical-align: middle;
 }
 .img-br {
   height: 240px;
   background-image: url(https://images.unsplash.com/photo-1598560917807-1bae44bd2be8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80);
   background-size: cover;
   background-position: center center;
+  vertical-align: middle;
 }
 
 @media(max-width: 767px) {
@@ -446,10 +469,10 @@ export default {
 }
 .img-title {
   font-size: 18px;
-  font-weight: 300;
+  font-weight: 400;
   text-align: center;
   position: absolute;
-  bottom: 0px;
+  bottom: 10px;
   right: 10px;
   color: white;
   z-index: 200;
@@ -489,5 +512,23 @@ export default {
 .map-text {
   height: 100%;
   padding: 50px;
+  letter-spacing: 1px;
+  h5 {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  i {
+    width: 30px;
+    text-align: center;
+  }
+}
+.contact {
+  font-size: 18px;
+  line-height: 40px;
+}
+.map-title {
+  border-bottom: 1px solid;
+  padding-bottom: 10px;
+  font-size: 24px;
 }
 </style>

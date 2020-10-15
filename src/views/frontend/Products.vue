@@ -1,11 +1,12 @@
 <template>
   <div class="products">
     <loading :active.sync="isLoading"></loading>
-    <div class="container mt-4">
+    <div class="container mt-0 mt-md-4">
       <div class="row">
         <!-- 商品分類 -->
-        <div class="col-2 d-none d-lg-block">
-          <div class="">
+        <div class="col-3 d-none d-lg-block">
+          <div class="sticky-top"
+            style="top: 105px">
             <div class="list-group list-group-flush">
               <a v-for="(item, index) in category.list" :key="index"
                 class="list-group-item list-group-item-action p-2 cursor"
@@ -31,8 +32,9 @@
             </div>
           </div>
         </div>
-        <div id="options" class="col d-lg-none sticky-top" style="top: 55px">
-          <select class="form-control mb-3"
+        <div id="options" class="col d-lg-none sticky-top px-3"
+          style="top: 55px">
+          <select class="form-control my-3"
             @change="categoryData($event.target.value)" v-if="category.list">
             <option :value="item" v-for="(item, index) in category.list"
               :key="index">{{ item }}
@@ -40,7 +42,7 @@
           </select>
         </div>
         <!-- 商品列表 -->
-        <div class="col-md-10">
+        <div class="col-md-9">
           <div class="tab-content">
             <div class="tab-pane active" id="all" role="tabpanel">
               <div class="container">
@@ -59,20 +61,20 @@
                         </div>
                       </a>
                       <div class="card-body p-2">
-                        <h6 class="font-weight-light product-title mb-0">{{ item.title }}
+                        <h6 class="product-title mb-0">{{ item.title }}
                           <small class="badge rounded-0 ml-1 mb-2 bg-main border-0"
                             style="font-size: 14px">
                             {{ item.category }}
                           </small>
                         </h6>
-                        <p class="card-text text-muted origin-price mb-1 d-none d-md-block">
+                        <p class="card-text text-muted origin-price mb-2 d-none d-md-block">
                           定價 NT${{ item.origin_price | thousands }}
                         </p>
-                        <p class="card-text price mb-0 mb-md-1">
+                        <p class="card-text price mb-2">
                           <small class="mr-2">優惠價</small>
-                          <span class="h5">NT${{ item.price | thousands }}</span>
+                          <span class="h6">NT${{ item.price | thousands }}</span>
                         </p>
-                        <a href="#" class="btn btn-outline-secondary btn-sm rounded-0 w-100"
+                        <a href="#" class="addBtn btn btn-outline-secondary btn-sm rounded-0 w-100"
                           @click.prevent="addToCart(item.id)">
                           <i class="fas fa-shopping-bag mr-1"></i>
                           <small>加入購物袋</small>
@@ -91,6 +93,17 @@
 </template>
 
 <script>
+/* global $ */
+
+// 導覽列往下滑
+$(window).scroll(() => {
+  if ($(window).scrollTop() > 0) {
+    $('#options').addClass('bg-main');
+  } else if ($(window).scrollTop() <= 0) {
+    $('#options').removeClass('bg-main');
+  }
+});
+
 export default {
   name: 'Products',
   data() {
@@ -174,7 +187,16 @@ export default {
 </script>
 
 <style lang="scss">
+#options {
+  transition: 0.5s;
+}
 .cursor {
   cursor: pointer;
 }
+.list-group-flush {
+  p {
+    font-size: 20px;
+  }
+}
+
 </style>
