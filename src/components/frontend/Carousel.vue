@@ -4,7 +4,7 @@
     <section class="section section-hot">
       <div id="carouselExampleInterval" class="carousel slide text-center" data-ride="carousel">
         <div class="text-primary mt-4">
-          <h4 class="mb-2">熱銷排行榜</h4>
+          <h4 class="hot-title mb-2">熱銷排行榜</h4>
           <p class="section-subtitle mb-0">暢銷款︱首購優選︱特價優惠</p>
         </div>
         <div class="carousel-inner">
@@ -23,7 +23,7 @@
                     class="card-img-top rounded-0">
                 </router-link>
                 <div class="card-body p-2">
-                  <h6 class="font-weight-light product-title mb-0">{{ item.title }}
+                  <h6 class="product-title mb-0">{{ item.title }}
                     <small class="badge rounded-0 ml-1 mb-2 bg-main border-0">
                       {{ item.category }}
                     </small>
@@ -59,7 +59,7 @@
                     class="card-img-top rounded-0">
                 </router-link>
                 <div class="card-body p-2">
-                  <h6 class="font-weight-light product-title mb-0">{{ item.title }}
+                  <h6 class="product-title mb-0">{{ item.title }}
                     <small class="badge rounded-0 ml-1 mb-2 bg-main border-0">
                       {{ item.category }}
                     </small>
@@ -199,6 +199,9 @@ export default {
   .card:nth-child(odd) {
     display: none;
   }
+}
+.hot-title {
+  font-size: 24px;
 }
 
 </style>

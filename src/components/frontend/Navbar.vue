@@ -3,7 +3,7 @@
     <div class="nav-bg">
       <div class="container">
         <nav id="navbar"
-          class="navbar navbar-expand-lg navbar-light p-0 py-md-2">
+          class="navbar navbar-expand-lg navbar-light py-2 px-0">
           <!-- logo -->
           <div class="logo">
             <router-link :to="{ name: '首頁' }"
@@ -140,6 +140,9 @@ $color_main: #FFF3E9;
   }
   .nav-top {
     padding-left: 15px !important;
+  }
+  #navbar {
+    z-index: 1000;
   }
 }
 .nav-item:hover {

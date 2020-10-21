@@ -32,8 +32,7 @@
             </div>
           </div>
         </div>
-        <div id="options" class="col d-lg-none sticky-top px-3 bg-white"
-          style="top: 55px">
+        <div id="options" class="col d-lg-none sticky-top px-3 p bg-main">
           <select class="form-control my-3"
             @change="categoryData($event.target.value)" v-if="category.list">
             <option :value="item" v-for="(item, index) in category.list"
@@ -183,6 +182,10 @@ export default {
   p {
     font-size: 20px;
   }
+}
+#options {
+  z-index: 999;
+  top: 55px;
 }
 
 </style>

@@ -24,7 +24,7 @@
         </li>
       </ul>
     </div>
-    <div class="container">
+    <div class="container success-area">
       <div class="row">
         <div class="col px-0 px-md-3">
           <div class="successImg"></div>
@@ -65,8 +65,11 @@ export default {
   height: 578px;
 }
 @media (max-width: 767px) {
+  .successImg {
+    height: 430px;
+  }
   .push {
-    height: 0;
+    height: 0px;
   }
 }
 .success-txt {

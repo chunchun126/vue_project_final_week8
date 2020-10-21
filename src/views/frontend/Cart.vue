@@ -315,9 +315,9 @@ export default {
   span,.total {
     font-size: 18px;
   }
-}
-.input-group {
-  height: 30px;
+  .input-group {
+    height: 40px;
+  }
 }
 .addNumber button.lh0 {
   line-height: 0.5 !important;

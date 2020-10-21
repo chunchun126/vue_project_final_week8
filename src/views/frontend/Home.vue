@@ -11,7 +11,7 @@
         <div class="carousel-inner">
             <div class="carousel-item active" data-interval="2000">
               <div class="banner-img1"></div>
-              <div class="carousel-caption bn-text text-left" style="top: 50%">
+              <div class="carousel-caption bn-text bn-text-1 text-left">
                 <p class="mb-1 text-primary title-eng">L'amour</p>
                 <p class="text-primary d-md-block d-none title-ch mb-3">︱ 婚 戒 系 列 ︱</p>
                 <small class="text-primary d-md-block d-none mb-2">Design by Bien-aimé</small>
@@ -22,8 +22,7 @@
             </div>
           <div class="carousel-item" data-interval="2000">
             <div class="banner-img2"></div>
-            <div class="carousel-caption bn-text text-left"
-              style="top: 40%;left: 120px">
+            <div class="carousel-caption bn-text bn-text-2 text-left">
               <p class="mb-1 text-white title-eng">La Manière</p>
               <p class="text-primary d-md-block d-none title-ch mb-3">︱ 摩 登 系 列 ︱</p>
               <small class="text-white d-md-block d-none mb-2">Design by Bien-aimé</small>
@@ -35,7 +34,7 @@
           </div>
           <div class="carousel-item" data-interval="2000">
             <div class="banner-img3"></div>
-            <div class="carousel-caption bn-text text-right" style="top: 50%">
+            <div class="carousel-caption bn-text bn-text-3 text-right">
               <p class="mb-1 text-primary title-eng">Classical</p>
               <p class="text-primary d-md-block d-none title-ch mb-3">︱ 經 典 系 列 ︱</p>
               <small class="text-primary d-md-block d-none mb-2">Design by Bien-aimé</small>
@@ -259,34 +258,32 @@
         </div>
       </section>
       <section id="map" class="section">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6 mb-2">
-              <div class="map-text bg-main text-muted">
-                <h4 class="text-primary mb-5 map-title">實體店面地址</h4>
-                <h5 class="mb-3">ATT 4 FUN 信義店</h5>
-                <ul class="contact">
-                  <li>
-                    <i class="fas fa-map-marked-alt"></i>
-                    地址：110台北市信義區松壽路12號</li>
-                  <li>
-                    <i class="far fa-calendar-alt"></i>
-                    營業時間：週一至週日 11:00–22:00</li>
-                  <li>
-                    <i class="fas fa-phone"></i>
-                    電話：<a href="tel:+886287808111">+886 287808111</a></li>
-                </ul>
-              </div>
+        <div class="row">
+          <div class="col-md-6 mb-2">
+            <div class="map-text bg-main text-muted">
+              <h4 class="text-primary mb-md-5 mb-4 map-title">實體店面地址</h4>
+              <h5 class="mb-3">ATT 4 FUN 信義店</h5>
+              <ul class="contact">
+                <li>
+                  <i class="fas fa-map-marked-alt"></i>
+                  地址：110台北市信義區松壽路12號</li>
+                <li>
+                  <i class="far fa-calendar-alt"></i>
+                  營業時間：週一至週日 11:00–22:00</li>
+                <li>
+                  <i class="fas fa-phone"></i>
+                  電話：<a href="tel:+886287808111">+886 287808111</a></li>
+              </ul>
             </div>
-            <div class="col-md-6">
-              <iframe
-                class="map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17194.648811765546!2d121.55506046074623!3d25.04324768995761!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb0b0c4fc8d%3A0x60f9b663d6a4deb1!2zQVRUIDQgRlVOIOS_oee-qeW6lw!5e0!3m2!1szh-TW!2stw!4v1600600913843!5m2!1szh-TW!2stw"
-                width="100%" height="450" frameborder="0"
-                style="border:0;" allowfullscreen=""
-                aria-hidden="false" tabindex="0">
-              </iframe>
-            </div>
+          </div>
+          <div class="col-md-6">
+            <iframe
+              class="map"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17194.648811765546!2d121.55506046074623!3d25.04324768995761!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb0b0c4fc8d%3A0x60f9b663d6a4deb1!2zQVRUIDQgRlVOIOS_oee-qeW6lw!5e0!3m2!1szh-TW!2stw!4v1600600913843!5m2!1szh-TW!2stw"
+              width="100%" height="450" frameborder="0"
+              style="border:0;" allowfullscreen=""
+              aria-hidden="false" tabindex="0">
+            </iframe>
           </div>
         </div>
       </section>
@@ -492,15 +489,12 @@ export default {
   transform: translateX(10px);
 }
 @media (max-width: 767px) {
-  // #bn {
-  //   top: -70px;
-  // }
   .bn-text {
     top: 150px;
     left: 10%;
     .title-eng {
       margin-bottom: 0;
-      font-size: 36px;
+      font-size: 28px;
     }
     a.btn {
       font-size: 12px;
@@ -522,6 +516,11 @@ export default {
     text-align: center;
   }
 }
+@media (max-width: 767px) {
+  .map-text {
+    padding: 20px;
+  }
+}
 .contact {
   font-size: 18px;
   line-height: 40px;
@@ -530,5 +529,28 @@ export default {
   border-bottom: 1px solid;
   padding-bottom: 10px;
   font-size: 24px;
+}
+.bn-text-1 {
+  top: 50%;
+}
+.bn-text-2 {
+  top: 40%;
+  left: 120px
+}
+.bn-text-3 {
+  top: 50%;
+}
+@media (max-width: 767px) {
+  .bn-text-1 {
+    top: 55%;
+    left: 15%;
+  }
+  .bn-text-2 {
+    top: 55%;
+    left: 15%;
+  }
+  .bn-text-3 {
+    top: 55%;
+  }
 }
 </style>

@@ -42,9 +42,9 @@
         </ul>
       </div>
       <div class="d-md-flex justify-content-between copyright">
-        <p class="mb-2">
+        <p class="mb-md-2">
           <span>Bien-aimé Copyright © 2020 </span>
-          <span class="d-none d-md-block">Online Shop All rights reserved.</span>
+          <span class="d-none d-md-inline-block">Online Shop All rights reserved.</span>
         </p>
         <p class="d-none d-md-block">圖片僅為練習使用，無商業用途。</p>
       </div>
